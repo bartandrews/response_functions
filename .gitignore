@@ -1,0 +1,5 @@
+**/.idea
+
+**/*.sr*
+**/nohup.out*
+vectors/**/*.vec*
