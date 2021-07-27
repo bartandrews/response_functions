@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILES=/home/bart/KDevProjects/response_functions/vectors/ltc/*0.dat
+FILES=~/KDevProjects/response_functions/vectors/ltc/*0.dat
 for f in $FILES
 do
 	echo $f
