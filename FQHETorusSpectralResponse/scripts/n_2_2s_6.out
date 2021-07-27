@@ -1,0 +1,1120 @@
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc0fe3b230
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc8ed1b030
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdca36f5b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffda0d0eab0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff6aa4fe30
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd87c8fb30
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd5b9472b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd27c78730
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc5ed80230
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc916ad4b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdbc791530
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffe14ecf230
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fffb48666b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc6ac28eb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffefc4d13b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdd22efd30
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdd4495230
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff92ebeab0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd3e687fb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff2708c730
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffebd3b4930
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            5                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fffc1ede5b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 5
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff40375ab0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fffef1d6830
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd47d901b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd4761bab0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc6fd6cbb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff6c9e97b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc8fa73bb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdb623f830
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffe456c0fb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd1ffdd930
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffff1a802b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd06e02730
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffebe98afb0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffe92113f30
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            5                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc8999a230
+----------------------------------------------------------------
+ Kx = 0 Ky = 5
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            2                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffcdc342530
+----------------------------------------------------------------
+ Kx = 0 Ky = 2
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            2                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdc1bfc930
+----------------------------------------------------------------
+ Kx = 0 Ky = 2
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffd39537c30
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffe7e659230
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdce6ca1b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffeb3973b30
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffde1ca7130
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            0                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7fff2f332730
+----------------------------------------------------------------
+ Kx = 0 Ky = 0
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            2                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+Hilbert space dimension = 4
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 4
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffe47502f30
+----------------------------------------------------------------
+ Kx = 0 Ky = 2
+ Hilbert space dimension = 4
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            3                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffdc5d60930
+----------------------------------------------------------------
+ Kx = 0 Ky = 3
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffcdf188430
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffcf733b6b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------
+NbrParticles        2                   
+NbrFluxQuanta       6                   
+Momentum            1                   
+Ratio               1                   
+Statistics          0                   
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+Hilbert space dimension = 3
+memory requested for Hilbert space = 7ko
+ Hilbert space dimension = 3
+FormFactor=1
+nbr interaction = 75
+====================================
+Manager at 0x7ffc3d7476b0
+----------------------------------------------------------------
+ Kx = 0 Ky = 1
+ Hilbert space dimension = 3
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+Attention, using dummy method AbstractHamiltonian::HermitianLowLevelAddMultiply (ComplexVector& , ComplexVector& )
+----------------------------------------------------------------

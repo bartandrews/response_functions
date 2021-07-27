@@ -1,0 +1,20 @@
+import numpy as np
+
+if __name__ == "__main__":
+
+    file = open(f"lty_script.sh", "w")
+    file.write("#!/bin/bash\n\n")
+    file.write("runs() {\n")
+    for Yukawa_exp in np.linspace(-4, 0, 41, endpoint=True):
+        print(Yukawa_exp)
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l0p0001/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.0001_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l0p0001/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.0001_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l0p001/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.001_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l0p001/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.001_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l0p01/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.01_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l0p01/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.01_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l0p1/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.1_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l0p1/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL0.1_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l10/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL10_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l10/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL10_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+        file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusSpectralResponse ../vectors/lty/l100/fermions_torus_kysym_coulomb_0_plus_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL100_scale_{10 ** Yukawa_exp:.5g}_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -10 --sr-omega-max 0 --sr-epsilon 1E-6 --sr-omega-interval 1E-7 --sr-spectral-resolution 1E-4 --use-coulomb --coulomb-strength 0 --perturbation-file ../vectors/lty/l100/pseudopotentials_V1_scale_{1 - 10 ** Yukawa_exp:.5g}_YukawaPlaneL100_scale_{10 ** Yukawa_exp:.5g}.dat --perturbation-strength 1 --sr-qy-momentum 0\n")
+    file.write("}\n")
+    file.write("export -f runs\n")
+    file.write("runs | nohup parallel -j 4 > nohup.out &\n")
+
+    file.close()

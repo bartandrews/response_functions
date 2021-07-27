@@ -1,0 +1,6 @@
+# pseudopotentials on the sphere for coulomb interaction 
+# in the Landau level N=0 for 2S=25 flux quanta
+#
+# Pseudopotentials = V_0 V_1 ...
+
+Pseudopotentials = 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
