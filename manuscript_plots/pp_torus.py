@@ -11,14 +11,15 @@ plt.rc('text.latex', preamble=r'\usepackage{amsmath}')
 
 if __name__ == "__main__":
 
-    directory = '/home/bart/KDevProjects/response_functions/vectors/pp_torus'
+    pp_directory = '/home/bart/PycharmProjects/response_functions/pseudopotentials/plane'
+    spec_directory = '/home/bart/PycharmProjects/response_functions/energy_spectra/n_2/pp_torus'
     pp_file = 'pseudopotentials_CoulombPlane.dat'
 
     idx_list = [i for i in range(9)]  # number of plots
     flux_limit = 60  # largest flux considered
 
     # construct pp_list
-    with open(os.path.join(directory, pp_file), 'r') as csvfile:
+    with open(os.path.join(pp_directory, pp_file), 'r') as csvfile:
         pp = csv.reader(csvfile, delimiter=' ')
         pp_list = []
         for i, row in enumerate(pp):
@@ -33,7 +34,7 @@ if __name__ == "__main__":
 
             spec_file = f'fermions_torus_CoulombPlane_V{2*idx+1}_only_n_2_2s_{flux}_ratio_1.000000.dat'
 
-            with open(os.path.join(directory, spec_file), 'r') as csvfile:
+            with open(os.path.join(spec_directory, spec_file), 'r') as csvfile:
                 spec = csv.reader(csvfile, delimiter=' ')
                 E_list = []
                 for i, row in enumerate(spec):
@@ -93,8 +94,19 @@ if __name__ == "__main__":
     x_val = [x[0] for x in red_points]
     y_val = [x[1] for x in red_points]
     ax.plot(x_val, y_val, '.', c='r')
-    ax.set_xlabel("$\\alpha$")
+    ax.set_xlabel("$i$")
     ax.set_ylabel("$l_\\text{crit}$")
+
+    fig.text(0.02, 0.89, "(a)", fontsize=12)
+    fig.text(0.49, 0.89, "(b)", fontsize=12)
+    fig.text(0.02, 0.72, "(c)", fontsize=12)
+    fig.text(0.49, 0.72, "(d)", fontsize=12)
+    fig.text(0.02, 0.55, "(e)", fontsize=12)
+    fig.text(0.49, 0.55, "(f)", fontsize=12)
+    fig.text(0.02, 0.38, "(g)", fontsize=12)
+    fig.text(0.49, 0.38, "(h)", fontsize=12)
+    fig.text(0.02, 0.21, "(i)", fontsize=12)
+    fig.text(0.49, 0.21, "(j)", fontsize=12)
 
     print(red_points)
     plt.savefig("/home/bart/Documents/papers/SR/pp_torus.png", bbox_inches='tight', dpi=300)
