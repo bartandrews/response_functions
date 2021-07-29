@@ -1555,7 +1555,7 @@ def plot_2d_ltc_mean_S_res_max(numb_qy, filename):
     plt.show()
 
 
-def plot_2d_lty_complete_res_max(numb_qy, filename):
+def plot_2d_ltypp_complete_res_max(numb_qy, filename):
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -1628,7 +1628,7 @@ def plot_2d_lty_complete_res_max(numb_qy, filename):
     plt.show()
 
 
-def plot_2d_lty_slope_res_max(numb_qy, filename):
+def plot_2d_ltypp_slope_res_max(numb_qy, filename):
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -1705,7 +1705,7 @@ def plot_2d_lty_slope_res_max(numb_qy, filename):
     plt.show()
 
 
-def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
+def plot_2d_ltypp_nbr_omega_res_max(numb_qy, filename):
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -1780,7 +1780,7 @@ def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
     plt.show()
 
 
-def plot_2d_lty_mean_S_res_max(numb_qy, filename):
+def plot_2d_ltypp_mean_S_res_max(numb_qy, filename):
 
     fig = plt.figure()
     ax = fig.add_subplot(111)
@@ -2471,10 +2471,10 @@ if __name__ == "__main__":
     # plot_2d_ltc_slope_res_max(18, filename="ltc_slope_res_max_2d.png")
     # plot_2d_ltc_nbr_omega_res_max(18, filename="ltc_nbr_omega_res_max_2d.png")
     # plot_2d_ltc_mean_S_res_max(18, filename="ltc_mean_S_res_max_2d.png")
-    # plot_2d_lty_complete_res_max(18, filename="ltyl100_complete_res_max_2d.png")
-    # plot_2d_lty_slope_res_max(18, filename="ltyl0p1_slope_res_max_2d.png")
-    # plot_2d_lty_nbr_omega_res_max(18, filename="ltyl0p1_nbr_omega_res_max_2d.png")
-    # plot_2d_lty_mean_S_res_max(18, filename="ltyl0p1_mean_S_res_max_2d.png")
+    # plot_2d_ltypp_complete_res_max(18, filename="ltyppl100_complete_res_max_2d.png")
+    # plot_2d_ltypp_slope_res_max(18, filename="ltyppl0p1_slope_res_max_2d.png")
+    # plot_2d_ltypp_nbr_omega_res_max(18, filename="ltyppl0p1_nbr_omega_res_max_2d.png")
+    # plot_2d_ltypp_mean_S_res_max(18, filename="ltyppl0p1_mean_S_res_max_2d.png")
 
     # Coulomb pseudopotentials #########################################################################################
     #
