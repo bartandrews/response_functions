@@ -1566,8 +1566,8 @@ def plot_2d_ltypp_complete_res_max(numb_qy, filename):
     name_list = []
     lbl = []
 
-    for Yukawa_exp in np.linspace(-4, 0, 41, endpoint=True):
-        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**Yukawa_exp:.5g}_YukawaPlaneL10_scale_{10**Yukawa_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**alpha_exp:.5g}_YukawaPlaneL1_scale_{10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -1639,8 +1639,8 @@ def plot_2d_ltypp_slope_res_max(numb_qy, filename):
     name_list = []
     lbl = []
 
-    for Yukawa_exp in np.linspace(-4, 0, 41, endpoint=True):
-        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**Yukawa_exp:.5g}_YukawaPlaneL0.1_scale_{10**Yukawa_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**alpha_exp:.5g}_YukawaPlaneL1_scale_{10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -1716,8 +1716,8 @@ def plot_2d_ltypp_nbr_omega_res_max(numb_qy, filename):
     name_list = []
     lbl = []
 
-    for Yukawa_exp in np.linspace(-4, 0, 41, endpoint=True):
-        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**Yukawa_exp:.5g}_YukawaPlaneL0.1_scale_{10**Yukawa_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**alpha_exp:.5g}_YukawaPlaneL1_scale_{10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -1791,8 +1791,322 @@ def plot_2d_ltypp_mean_S_res_max(numb_qy, filename):
     name_list = []
     lbl = []
 
-    for Yukawa_exp in np.linspace(-4, -1.2, 29, endpoint=True):
-        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**Yukawa_exp:.5g}_YukawaPlaneL0.1_scale_{10**Yukawa_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
+    for alpha_exp in np.linspace(-4, -1.2, 29, endpoint=True):
+        name_list.append(f"fermions_torus_spec_resp_kysym_coulomb_0_plus_V1_scale_{1-10**alpha_exp:.5g}_YukawaPlaneL1_scale_{10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut")
+
+    for i, file in enumerate(name_list):
+        with open('stripped_files/' + file, 'r') as csvfile:
+            plots = csv.reader(csvfile, delimiter=' ')
+            for row in plots:
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [10 ** (-4 + i * 0.1)]
+                # if i < 10:
+                #     lbl += [0.0001*(i+1)]
+                # elif 10 <= i < 19:
+                #     lbl += [0.001 * (i % 10 + 2)]
+                # elif 19 <= i < 28:
+                #     lbl += [0.01 * (i % 19 + 2)]
+                # elif 28 <= i:
+                #     lbl += [0.1 * (i % 28 + 2)]
+
+    print(np.shape(omega), np.shape(SR), np.shape(lbl))
+
+    omega_max = []
+    sr_max = []
+    for i, entry in enumerate(omega):
+        if SR[i] > SR[i-1] and SR[i] > SR[i+1] and omega[i] > 0:
+            omega_max += [1]
+            sr_max += [SR[i]]
+        else:
+            omega_max += [0]
+
+    print(omega_max.count(1))
+
+    lbl[:] = [x for i, x in enumerate(lbl) if omega_max[i] == 1]
+    omega[:] = [x for i, x in enumerate(omega) if omega_max[i] == 1]
+
+    sr_values = []
+    lbl_values = sorted(list(set(lbl)))
+    for lbl_val in lbl_values:
+        omega_set = [i for i, e in enumerate(lbl) if e == lbl_val]
+        sr_max_set = sr_max[omega_set[0]:omega_set[-1]+1]
+        sr_mean = np.mean(sr_max_set)
+        sr_values += [sr_mean]
+
+    log_lbl_values = [np.log10(i) for i in lbl_values]
+
+    im = ax.scatter(log_lbl_values, sr_values, s=10)
+
+    ax.set_xlabel('$\\log_{10}(\\alpha)$')
+    ax.xaxis.set_major_formatter(FormatStrFormatter('%g'))
+    ax.set_ylabel('$\\bar{S}$')
+
+    ax.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
+    ax.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
+
+    ax.text(-3, 18000, "$\\langle \\bar{{S}} \\rangle = ({mean:.3g})\pm ({sd:.3g})$".format(
+        mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10))
+
+    # ax.set_xticks(np.arange(2, 40, 2))
+
+    fig.subplots_adjust(top=0.95, bottom=0.1, right=0.95, left=0.11)
+
+    plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, dpi=300)
+    plt.show()
+
+
+def plot_2d_lty_complete_res_max(numb_qy, filename):
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    omega = []
+    SR = []
+
+    name_list = []
+    lbl = []
+
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if alpha_exp == 0:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+        else:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+
+
+    for i, file in enumerate(name_list):
+        with open('stripped_files/' + file, 'r') as csvfile:
+            plots = csv.reader(csvfile, delimiter=' ')
+            for row in plots:
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [10**(-4+i*0.1)]
+                # if i < 10:
+                #     lbl += [0.0001*(i+1)]
+                # elif 10 <= i < 19:
+                #     lbl += [0.001 * (i % 10 + 2)]
+                # elif 19 <= i < 28:
+                #     lbl += [0.01 * (i % 19 + 2)]
+                # elif 28 <= i:
+                #     lbl += [0.1 * (i % 28 + 2)]
+
+    print(np.shape(omega), np.shape(SR), np.shape(lbl))
+
+    omega_max = []
+    sr_max = []
+    for i, entry in enumerate(omega):
+        if SR[i] > SR[i-1] and SR[i] > SR[i+1] and omega[i] > 0:
+            omega_max += [1]
+            sr_max += [SR[i]]
+        else:
+            omega_max += [0]
+
+    print(omega_max.count(1))
+
+    lbl[:] = [x for i, x in enumerate(lbl) if omega_max[i] == 1]
+    omega[:] = [x for i, x in enumerate(omega) if omega_max[i] == 1]
+
+    print(len(omega))
+
+    # plot the large S points on top
+    zipped = list(zip(lbl, omega, sr_max))
+    zipped.sort(key=lambda pair: pair[2])
+    lbl, omega, sr_max = zip(*zipped)
+
+    im = ax.scatter(lbl, omega, c=sr_max, s=10, norm=colors.LogNorm(vmin=min(sr_max), vmax=max(sr_max)),
+                    cmap=plt.cm.Reds)
+    fig.colorbar(im, ax=ax, label='$S$')
+    ax.set_xlim([0.00001, 10])
+    ax.set_ylim([0.00001, 10])
+
+    ax.set_xscale('log')
+    ax.set_yscale('log')
+    ax.set_xlabel('$\\alpha$')
+    # ax.xaxis.set_major_formatter(FormatStrFormatter('%.2g'))
+    ax.set_ylabel('$\\omega$')
+
+    # ax.set_xticks(np.arange(2, 40, 2))
+
+    fig.subplots_adjust(top=0.95, bottom=0.1, right=0.95, left=0.11)
+
+    plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, dpi=300)
+    plt.show()
+
+
+def plot_2d_lty_slope_res_max(numb_qy, filename):
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    omega = []
+    SR = []
+
+    name_list = []
+    lbl = []
+
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if alpha_exp == 0:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+        else:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+
+    for i, file in enumerate(name_list):
+        with open('stripped_files/' + file, 'r') as csvfile:
+            plots = csv.reader(csvfile, delimiter=' ')
+            for row in plots:
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [10 ** (-4 + i * 0.1)]
+                # if i < 10:
+                #     lbl += [0.0001*(i+1)]
+                # elif 10 <= i < 19:
+                #     lbl += [0.001 * (i % 10 + 2)]
+                # elif 19 <= i < 28:
+                #     lbl += [0.01 * (i % 19 + 2)]
+                # elif 28 <= i:
+                #     lbl += [0.1 * (i % 28 + 2)]
+
+    print(np.shape(omega), np.shape(SR), np.shape(lbl))
+
+    omega_max = []
+    sr_max = []
+    for i, entry in enumerate(omega):
+        if SR[i] > SR[i-1] and SR[i] > SR[i+1] and omega[i] > 0:
+            omega_max += [1]
+            sr_max += [SR[i]]
+        else:
+            omega_max += [0]
+
+    print(omega_max.count(1))
+
+    lbl[:] = [x for i, x in enumerate(lbl) if omega_max[i] == 1]
+    omega[:] = [x for i, x in enumerate(omega) if omega_max[i] == 1]
+
+    log_omega_range = []
+    lbl_values = sorted(list(set(lbl)))
+    for lbl_val in lbl_values:
+        omega_set = [i for i, e in enumerate(lbl) if e == lbl_val]
+        max_val = max(omega[omega_set[0]:omega_set[-1]+1])
+        min_val = min(omega[omega_set[0]:omega_set[-1]+1])
+        range_val = max_val - min_val
+        log_range_val = np.log10(range_val)
+        log_omega_range += [log_range_val]
+
+    log_lbl_values = [np.log10(i) for i in lbl_values]
+    print(log_lbl_values)
+    print(log_omega_range)
+
+    im = ax.scatter(log_lbl_values, log_omega_range, s=10)
+
+    ax.set_xlabel('$\\log_{10}(\\alpha)$')
+    ax.xaxis.set_major_formatter(FormatStrFormatter('%g'))
+    ax.set_ylabel('$\\log_{10}[\\mathrm{range}(\\Omega)]$')
+    ax.yaxis.set_major_formatter(FormatStrFormatter('%g'))
+
+    line_of_best_fit(ax, log_lbl_values, log_omega_range, -4, -0.5)
+
+    # ax.set_xticks(np.arange(2, 40, 2))
+
+    fig.subplots_adjust(top=0.95, bottom=0.1, right=0.95, left=0.11)
+
+    plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, dpi=300)
+    plt.show()
+
+
+def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    omega = []
+    SR = []
+
+    name_list = []
+    lbl = []
+
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if alpha_exp == 0:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+        else:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+
+    for i, file in enumerate(name_list):
+        with open('stripped_files/' + file, 'r') as csvfile:
+            plots = csv.reader(csvfile, delimiter=' ')
+            for row in plots:
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [10 ** (-4 + i * 0.1)]
+                # if i < 10:
+                #     lbl += [0.0001*(i+1)]
+                # elif 10 <= i < 19:
+                #     lbl += [0.001 * (i % 10 + 2)]
+                # elif 19 <= i < 28:
+                #     lbl += [0.01 * (i % 19 + 2)]
+                # elif 28 <= i:
+                #     lbl += [0.1 * (i % 28 + 2)]
+
+    print(np.shape(omega), np.shape(SR), np.shape(lbl))
+
+    omega_max = []
+    sr_max = []
+    for i, entry in enumerate(omega):
+        if SR[i] > SR[i-1] and SR[i] > SR[i+1] and omega[i] > 0:
+            omega_max += [1]
+            sr_max += [SR[i]]
+        else:
+            omega_max += [0]
+
+    print(omega_max.count(1))
+
+    lbl[:] = [x for i, x in enumerate(lbl) if omega_max[i] == 1]
+    omega[:] = [x for i, x in enumerate(omega) if omega_max[i] == 1]
+
+    len_values = []
+    lbl_values = sorted(list(set(lbl)))
+    for lbl_val in lbl_values:
+        omega_set = [i for i, e in enumerate(lbl) if e == lbl_val]
+        len_val = len(omega_set)
+        len_values += [len_val]
+
+    log_lbl_values = [np.log10(i) for i in lbl_values]
+
+    im = ax.scatter(log_lbl_values, len_values, s=10)
+
+    ax.set_xlabel('$\\log_{10}(\\alpha)$')
+    ax.xaxis.set_major_formatter(FormatStrFormatter('%g'))
+    ax.set_ylabel('$n(\\Omega)$')
+
+    ax.axhline(np.mean(len_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
+    ax.axhspan(np.mean(len_values) - np.std(len_values), np.mean(len_values) + np.std(len_values), alpha=0.1, color='red')
+
+    ax.text(-2.5, 60, "$\\langle n(\\Omega) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
+        mean=np.mean(len_values), sd=np.std(len_values), fontsize=10))
+
+    # ax.set_xticks(np.arange(2, 40, 2))
+
+    fig.subplots_adjust(top=0.95, bottom=0.1, right=0.95, left=0.11)
+
+    plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, dpi=300)
+    plt.show()
+
+
+def plot_2d_lty_mean_S_res_max(numb_qy, filename):
+
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+
+    omega = []
+    SR = []
+
+    name_list = []
+    lbl = []
+
+    for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if alpha_exp == 0:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+        else:
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -2471,10 +2785,14 @@ if __name__ == "__main__":
     # plot_2d_ltc_slope_res_max(18, filename="ltc_slope_res_max_2d.png")
     # plot_2d_ltc_nbr_omega_res_max(18, filename="ltc_nbr_omega_res_max_2d.png")
     # plot_2d_ltc_mean_S_res_max(18, filename="ltc_mean_S_res_max_2d.png")
-    # plot_2d_ltypp_complete_res_max(18, filename="ltyppl100_complete_res_max_2d.png")
-    # plot_2d_ltypp_slope_res_max(18, filename="ltyppl0p1_slope_res_max_2d.png")
-    # plot_2d_ltypp_nbr_omega_res_max(18, filename="ltyppl0p1_nbr_omega_res_max_2d.png")
-    # plot_2d_ltypp_mean_S_res_max(18, filename="ltyppl0p1_mean_S_res_max_2d.png")
+    # plot_2d_ltypp_complete_res_max(18, filename="ltyppl1_complete_res_max_2d.png")
+    # plot_2d_ltypp_slope_res_max(18, filename="ltyppl1_slope_res_max_2d.png")
+    # plot_2d_ltypp_nbr_omega_res_max(18, filename="ltyppl1_nbr_omega_res_max_2d.png")
+    # plot_2d_ltypp_mean_S_res_max(18, filename="ltyppl1_mean_S_res_max_2d.png")
+    plot_2d_lty_complete_res_max(18, filename="ltyl0p0001_complete_res_max_2d.png")
+    plot_2d_lty_slope_res_max(18, filename="ltyl0p0001_slope_res_max_2d.png")
+    plot_2d_lty_nbr_omega_res_max(18, filename="ltyl0p0001_nbr_omega_res_max_2d.png")
+    plot_2d_lty_mean_S_res_max(18, filename="ltyl0p0001_mean_S_res_max_2d.png")
 
     # Coulomb pseudopotentials #########################################################################################
     #
@@ -2483,9 +2801,9 @@ if __name__ == "__main__":
     # plot_2d_cpt_fixed_full_box(18, omega_min=-100, omega_max=100, filename="cpt_fixed_full_box_2d.png")
     # plot_2d_cpt_fixed_full_hist(18, omega_min=-100, omega_max=100, filename="cpt_fixed_full_hist_2d.png")
     # plot_2d_cpt_fixed_full_max(18, omega_min=-100, omega_max=100, filename="cpt_fixed_full_max_2d.png")  # old
-    plot_2d_cpt_variable_full(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_2d.png")
-    plot_2d_cpt_variable_full_box(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_box_2d.png")
-    plot_2d_cpt_variable_full_hist(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_hist_2d.png")
+    # plot_2d_cpt_variable_full(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_2d.png")
+    # plot_2d_cpt_variable_full_box(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_box_2d.png")
+    # plot_2d_cpt_variable_full_hist(18, omega_min=-100, omega_max=100, filename="cpt_variable_full_hist_2d.png")
 
     # Yukawa pseudopotentials ##########################################################################################
     #
