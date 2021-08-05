@@ -8,7 +8,7 @@ import heapq
 import glob
 import itertools
 import matplotlib.gridspec as gridspec
-from matplotlib.ticker import FormatStrFormatter
+from matplotlib.ticker import FormatStrFormatter, LogLocator
 import matplotlib.ticker as ticker
 import matplotlib.colors as colors
 from scipy import stats
@@ -54,15 +54,15 @@ def plot_2d_ltc_early(axis, numb_qy, omega_min, omega_max):
         SR = []
         file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0" \
                f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)
-                SR.append(float(row[1]))
+                SR.append(float(row[1])/1000)
         axis.scatter(omega, SR, s=0.5, label=f"${1*(i+1):.2g}$", marker=next(marker))
 
     axis.set_xlabel('$\omega$')
-    axis.set_ylabel('$S$')
+    axis.set_ylabel('$S/10^3$')
     axis.set_ylim(0)
     axis.legend(loc='upper center', handletextpad=0, borderpad=0.2, framealpha=1,
                 edgecolor=None, markerscale=5,
@@ -83,11 +83,11 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
                  "coulomb_0.1_plus_V1_scale_0.9", "coulomb_0.316_plus_V1_scale_0.684", "coulomb"]:
         file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0" \
                f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)
-                SR.append(float(row[1]))
+                SR.append(float(row[1])/1000)
 
     V3 = [-4]*10000 + [-3.5]*10000 + [-3]*10000 + [-2.5]*10000 + [-2]*10000 + [-1.5]*10000 + [-1]*10000 + [-0.5]*10000 + [0]*10000
     axis.scatter(V3, omega, SR, s=0.5, c=V3, cmap='brg')
@@ -95,13 +95,13 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%.2g$'))
     axis.set_ylabel('$\\omega$')
-    axis.set_zlabel('$S$')
+    axis.set_zlabel('$S/10^3$')
     axis.set_zlim(0)
-    axis.set_position(Bbox.from_bounds(0.48, 0.67, 0.44, 0.31))
+    axis.set_position(Bbox.from_bounds(0.48, 0.67, 0.415, 0.31))
     axis.tick_params(axis='both', which='major', pad=0)
     axis.xaxis.labelpad = 0
     axis.yaxis.labelpad = 0
-    axis.zaxis.labelpad = 0
+    axis.zaxis.labelpad = -2
 
     #ax.set_xticks(np.arange(0, 1.05, 0.1))
 
@@ -172,7 +172,7 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy):
                               f"fermions_torus_spec_resp_kysym_coulomb_0.794_plus_V1_scale_0.206_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut",
                               f"fermions_torus_spec_resp_kysym_coulomb_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut"]):
 
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)
@@ -218,7 +218,17 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy):
     axis.set_ylim([0.00001, 10])
 
     axis.set_xscale('log')
+    x_major = LogLocator(base=10.0, numticks=4)
+    axis.xaxis.set_major_locator(x_major)
+    x_minor = LogLocator(base=10.0, subs=np.arange(1.0, 10.0) * 0.1, numticks=10)
+    axis.xaxis.set_minor_locator(x_minor)
+    axis.xaxis.set_minor_formatter(ticker.NullFormatter())
     axis.set_yscale('log')
+    y_major = LogLocator(base=10.0, numticks=4)
+    axis.yaxis.set_major_locator(y_major)
+    y_minor = LogLocator(base=10.0, subs=np.arange(1.0, 10.0) * 0.1, numticks=10)
+    axis.yaxis.set_minor_locator(y_minor)
+    axis.yaxis.set_minor_formatter(ticker.NullFormatter())
     axis.set_xlabel('$\\alpha$')
     # ax.xaxis.set_major_formatter(FormatStrFormatter('%.2g'))
     axis.set_ylabel('$\\omega$')
@@ -279,7 +289,7 @@ def plot_2d_ltc_slope_res_max(axis, numb_qy):
                               f"fermions_torus_spec_resp_kysym_coulomb_0.794_plus_V1_scale_0.206_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut",
                               f"fermions_torus_spec_resp_kysym_coulomb_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut"]):
 
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)
@@ -388,7 +398,7 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy):
                               f"fermions_torus_spec_resp_kysym_coulomb_0.794_plus_V1_scale_0.206_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut",
                               f"fermions_torus_spec_resp_kysym_coulomb_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut"]):
 
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)
@@ -495,7 +505,7 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy):
                               f"fermions_torus_spec_resp_kysym_coulomb_0.794_plus_V1_scale_0.206_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut",
                               f"fermions_torus_spec_resp_kysym_coulomb_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-0_eps_1e-06.sr.cut"]):
 
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 omega.append(float(row[0])+10)

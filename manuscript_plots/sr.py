@@ -30,19 +30,20 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
         SR = []
         file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qy_{qy_value}" \
                f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
-        with open('/home/bart/KDevProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
                 if float(row[0])+10 > -0.015:
                     if name == "V1" and float(row[0])+10 > 0.015:
                         continue
                     omega.append(float(row[0])+10)
-                    SR.append(float(row[1]))
+                    SR.append(float(row[1])/100)
         axis.scatter(omega, SR, s=1, label=qy_value, marker=next(marker))
 
     axis.set_xlabel('$\omega$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$S$')
+    axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
+    axis.set_ylabel('$S/10^2$')
     axis.set_ylim(bottom=0)
     if name == "V1":
         axis.set_xlim([-0.015, 0.015])
@@ -66,7 +67,7 @@ if __name__ == "__main__":
     fig.text(0.02, 0.85, "(a)", fontsize=12)
     fig.text(0.47, 0.85, "(b)", fontsize=12)
 
-    fig.text(0.34, 0.8, "Laughlin", fontsize=11)
+    fig.text(0.405, 0.8, "$V_1$", fontsize=11)
     fig.text(0.79, 0.8, "Coulomb", fontsize=11)
 
     plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)

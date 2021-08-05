@@ -1868,11 +1868,14 @@ def plot_2d_lty_complete_res_max(numb_qy, filename):
     lbl = []
 
     for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if "l10_" in filename and alpha_exp < -3:
+            continue
+        if "l100_" in filename and alpha_exp < -2:
+            continue
         if alpha_exp == 0:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
         else:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
-
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -1880,7 +1883,7 @@ def plot_2d_lty_complete_res_max(numb_qy, filename):
             for row in plots:
                 omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
-                lbl += [10**(-4+i*0.1)]
+                lbl += [10**(-2+i*0.1)]
                 # if i < 10:
                 #     lbl += [0.0001*(i+1)]
                 # elif 10 <= i < 19:
@@ -1916,8 +1919,8 @@ def plot_2d_lty_complete_res_max(numb_qy, filename):
     im = ax.scatter(lbl, omega, c=sr_max, s=10, norm=colors.LogNorm(vmin=min(sr_max), vmax=max(sr_max)),
                     cmap=plt.cm.Reds)
     fig.colorbar(im, ax=ax, label='$S$')
-    ax.set_xlim([0.00001, 10])
-    ax.set_ylim([0.00001, 10])
+    ax.set_xlim([0.001, 10])
+    ax.set_ylim([0.0000001, 10])
 
     ax.set_xscale('log')
     ax.set_yscale('log')
@@ -1945,10 +1948,14 @@ def plot_2d_lty_slope_res_max(numb_qy, filename):
     lbl = []
 
     for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if "l10_" in filename and alpha_exp < -3:
+            continue
+        if "l100_" in filename and alpha_exp < -2:
+            continue
         if alpha_exp == 0:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
         else:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -1956,7 +1963,7 @@ def plot_2d_lty_slope_res_max(numb_qy, filename):
             for row in plots:
                 omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10 ** (-2 + i * 0.1)]
                 # if i < 10:
                 #     lbl += [0.0001*(i+1)]
                 # elif 10 <= i < 19:
@@ -2003,7 +2010,7 @@ def plot_2d_lty_slope_res_max(numb_qy, filename):
     ax.set_ylabel('$\\log_{10}[\\mathrm{range}(\\Omega)]$')
     ax.yaxis.set_major_formatter(FormatStrFormatter('%g'))
 
-    line_of_best_fit(ax, log_lbl_values, log_omega_range, -4, -0.5)
+    line_of_best_fit(ax, log_lbl_values, log_omega_range, -2, -1.5)
 
     # ax.set_xticks(np.arange(2, 40, 2))
 
@@ -2025,10 +2032,14 @@ def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
     lbl = []
 
     for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if "l10_" in filename and alpha_exp < -3:
+            continue
+        if "l100_" in filename and alpha_exp < -2:
+            continue
         if alpha_exp == 0:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
         else:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -2036,7 +2047,7 @@ def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
             for row in plots:
                 omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10 ** (-2 + i * 0.1)]
                 # if i < 10:
                 #     lbl += [0.0001*(i+1)]
                 # elif 10 <= i < 19:
@@ -2080,7 +2091,7 @@ def plot_2d_lty_nbr_omega_res_max(numb_qy, filename):
     ax.axhline(np.mean(len_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     ax.axhspan(np.mean(len_values) - np.std(len_values), np.mean(len_values) + np.std(len_values), alpha=0.1, color='red')
 
-    ax.text(-2.5, 60, "$\\langle n(\\Omega) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
+    ax.text(-1.5, 38, "$\\langle n(\\Omega) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(len_values), sd=np.std(len_values), fontsize=10))
 
     # ax.set_xticks(np.arange(2, 40, 2))
@@ -2103,10 +2114,14 @@ def plot_2d_lty_mean_S_res_max(numb_qy, filename):
     lbl = []
 
     for alpha_exp in np.linspace(-4, 0, 41, endpoint=True):
+        if "l10_" in filename and alpha_exp < -3:
+            continue
+        if "l100_" in filename and alpha_exp < -2:
+            continue
         if alpha_exp == 0:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_plus_V1_scale_0_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
         else:
-            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-0.0001_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
+            name_list.append(f"fermions_torus_spec_resp_kysym_yukawa-100_{10**alpha_exp:.5g}_plus_V1_scale_{1-10**alpha_exp:.5g}_n_6_2s_{numb_qy}_ratio_1.000000_qy_0.omega_-10-10_eps_1e-06.sr.cut")
 
     for i, file in enumerate(name_list):
         with open('stripped_files/' + file, 'r') as csvfile:
@@ -2114,7 +2129,7 @@ def plot_2d_lty_mean_S_res_max(numb_qy, filename):
             for row in plots:
                 omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10 ** (-2 + i * 0.1)]
                 # if i < 10:
                 #     lbl += [0.0001*(i+1)]
                 # elif 10 <= i < 19:
@@ -2159,7 +2174,7 @@ def plot_2d_lty_mean_S_res_max(numb_qy, filename):
     ax.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     ax.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
 
-    ax.text(-3, 18000, "$\\langle \\bar{{S}} \\rangle = ({mean:.3g})\pm ({sd:.3g})$".format(
+    ax.text(-2, 36000, "$\\langle \\bar{{S}} \\rangle = ({mean:.3g})\pm ({sd:.3g})$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10))
 
     # ax.set_xticks(np.arange(2, 40, 2))
@@ -2789,10 +2804,10 @@ if __name__ == "__main__":
     # plot_2d_ltypp_slope_res_max(18, filename="ltyppl1_slope_res_max_2d.png")
     # plot_2d_ltypp_nbr_omega_res_max(18, filename="ltyppl1_nbr_omega_res_max_2d.png")
     # plot_2d_ltypp_mean_S_res_max(18, filename="ltyppl1_mean_S_res_max_2d.png")
-    plot_2d_lty_complete_res_max(18, filename="ltyl0p0001_complete_res_max_2d.png")
-    plot_2d_lty_slope_res_max(18, filename="ltyl0p0001_slope_res_max_2d.png")
-    plot_2d_lty_nbr_omega_res_max(18, filename="ltyl0p0001_nbr_omega_res_max_2d.png")
-    plot_2d_lty_mean_S_res_max(18, filename="ltyl0p0001_mean_S_res_max_2d.png")
+    # plot_2d_lty_complete_res_max(18, filename="ltyl100_complete_res_max_2d.png")
+    plot_2d_lty_slope_res_max(18, filename="ltyl100_slope_res_max_2d.png")
+    # plot_2d_lty_nbr_omega_res_max(18, filename="ltyl100_nbr_omega_res_max_2d.png")
+    # plot_2d_lty_mean_S_res_max(18, filename="ltyl100_mean_S_res_max_2d.png")
 
     # Coulomb pseudopotentials #########################################################################################
     #
