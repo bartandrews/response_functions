@@ -116,12 +116,15 @@ def plot_2d_coulomb_conv_box(numb_qy, omega_min, omega_max, filename):
         with open('stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                omega.append(float(row[0]))
+                omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
             data_to_plot += [omega]
 
     props = dict(markerfacecolor='b', marker='x', markersize=5)
-    ax.boxplot(data_to_plot, positions=lbl, flierprops=props, widths=5)
+    bp_dict = ax.boxplot(data_to_plot, positions=lbl, flierprops=props, widths=5)
+
+    print([item.get_ydata() for item in bp_dict['medians']])
+    print([item.get_ydata() for item in bp_dict['boxes']])
 
     ax.set_xlabel('nbr_eig')
     ax.set_ylabel('$\omega$')
@@ -2768,7 +2771,7 @@ if __name__ == "__main__":
     # name = "coulomb_0.0001_plus_V1"
     # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # plot_laughlin_res_2d(18, omega_min=-25, omega_max=5, filename="laughlin_res_2d.png")
-    # plot_2d_coulomb_conv_box(18, omega_min=-100, omega_max=100, filename="coulomb_conv_box_2d.png")
+    plot_2d_coulomb_conv_box(18, omega_min=-100, omega_max=100, filename="coulomb_conv_box_2d_offset.png")
 
     # Laughlin perturbed by Coulomb ####################################################################################
     #
@@ -2805,7 +2808,7 @@ if __name__ == "__main__":
     # plot_2d_ltypp_nbr_omega_res_max(18, filename="ltyppl1_nbr_omega_res_max_2d.png")
     # plot_2d_ltypp_mean_S_res_max(18, filename="ltyppl1_mean_S_res_max_2d.png")
     # plot_2d_lty_complete_res_max(18, filename="ltyl100_complete_res_max_2d.png")
-    plot_2d_lty_slope_res_max(18, filename="ltyl100_slope_res_max_2d.png")
+    # plot_2d_lty_slope_res_max(18, filename="ltyl100_slope_res_max_2d.png")
     # plot_2d_lty_nbr_omega_res_max(18, filename="ltyl100_nbr_omega_res_max_2d.png")
     # plot_2d_lty_mean_S_res_max(18, filename="ltyl100_mean_S_res_max_2d.png")
 
