@@ -2754,6 +2754,16 @@ if __name__ == "__main__":
 
     # Coulomb and Laughlin tests #######################################################################################
     #
+    name = "coulomb_0_plus_Coulomb_V1"
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    name = "coulomb_0_plus_Coulomb_V0V1"
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    name = "coulomb_0_plus_Coulomb_V1V3"
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    name = "coulomb_0_plus_Coulomb_V0V1V2V3"
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    name = "coulomb_0_plus_Coulomb_V0V1V2V3_trunc_2"
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # name = "coulomb"
     # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # name = "coulomb_swap"
@@ -2771,7 +2781,7 @@ if __name__ == "__main__":
     # name = "coulomb_0.0001_plus_V1"
     # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # plot_laughlin_res_2d(18, omega_min=-25, omega_max=5, filename="laughlin_res_2d.png")
-    plot_2d_coulomb_conv_box(18, omega_min=-100, omega_max=100, filename="coulomb_conv_box_2d_offset.png")
+    # plot_2d_coulomb_conv_box(18, omega_min=-100, omega_max=100, filename="coulomb_conv_box_2d_offset.png")
 
     # Laughlin perturbed by Coulomb ####################################################################################
     #
