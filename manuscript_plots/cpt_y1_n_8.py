@@ -196,18 +196,18 @@ if __name__ == "__main__":
     gs = gridspec.GridSpec(2, 2, hspace=0.4, wspace=0.4)
 
     ax0 = plt.subplot(gs[0])
-    plot_2d_cpt_variable_full(ax0, 18, omega_min=-100, omega_max=100)
+    plot_2d_cpt_variable_full(ax0, 24, omega_min=-100, omega_max=100)
     ax1 = plt.subplot(gs[1], projection='3d')
-    plot_3d_cpt_variable_full(ax1, 18, omega_min=-100, omega_max=100)
+    plot_3d_cpt_variable_full(ax1, 24, omega_min=-100, omega_max=100)
     ax2 = plt.subplot(gs[2])
-    plot_2d_cpt_variable_full_box(ax2, 18, omega_min=-100, omega_max=100)
+    plot_2d_cpt_variable_full_box(ax2, 24, omega_min=-100, omega_max=100)
     ax3 = plt.subplot(gs[3])
-    plot_2d_cpt_variable_full_hist(ax3, 18, omega_min=-100, omega_max=100)
+    plot_2d_cpt_variable_full_hist(ax3, 24, omega_min=-100, omega_max=100)
 
     fig.text(0.02, 0.9, "(a)", fontsize=12)
     fig.text(0.49, 0.9, "(b)", fontsize=12)
     fig.text(0.02, 0.42, "(c)", fontsize=12)
     fig.text(0.49, 0.42, "(d)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/cpt_y1.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR/cpt_y1_n_8.png", bbox_inches='tight', dpi=300)
     plt.show()
