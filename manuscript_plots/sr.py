@@ -40,11 +40,10 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
                     SR.append(float(row[1])/100)
         axis.scatter(omega, SR, s=1, label=qy_value, marker=next(marker))
 
-        # bp_dict = axis.boxplot(omega)
-        #
-        # print(bp_dict['medians'][0].get_ydata()[0])
-        # print([item.get_ydata() for item in bp_dict['medians']])
-        # print([item.get_ydata() for item in bp_dict['boxes']])
+        # if name == 'coulomb' and qy_value == 0:
+        #     print("lower quartile = ", np.percentile(omega, 25))
+        #     print("median = ", np.median(omega))
+        #     print("upper quartile = ", np.percentile(omega, 75))
 
     axis.set_xlabel('$\omega$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
@@ -76,5 +75,5 @@ if __name__ == "__main__":
     fig.text(0.405, 0.8, "$V_1$", fontsize=11)
     fig.text(0.79, 0.8, "Coulomb", fontsize=11)
 
-    plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)
     plt.show()

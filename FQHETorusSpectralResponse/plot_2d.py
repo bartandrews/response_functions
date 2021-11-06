@@ -41,17 +41,22 @@ def plot_2d_q(name, numb_qy, omega_min, omega_max, filename):
 
     marker = itertools.cycle(('1', '2', '3', '4', ',', '+', '.', 'o', '*', '^', 'v', '>', '<', 'X', '_', 'd', '|', 'H'))
 
-    for qy_value in range(numb_qy):
+    for qy_value in [0]:  # range(numb_qy)
         omega = []
         SR = []
-        file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qy_{qy_value}" \
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_7_2s_21_ratio_1.000000_qy_{qy_value}" \
                f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
         with open('stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                omega.append(float(row[0]))
+                omega.append(float(row[0])+10)
                 SR.append(float(row[1]))
         ax.scatter(omega, SR, s=1, label=qy_value, marker=next(marker))
+
+        if name == 'coulomb' and qy_value == 0:
+            print("lower quartile = ", np.percentile(omega, 25))
+            print("median = ", np.median(omega))
+            print("upper quartile = ", np.percentile(omega, 75))
 
     ax.set_xlabel('$\omega$')
     ax.set_ylabel('$S$')
@@ -61,7 +66,71 @@ def plot_2d_q(name, numb_qy, omega_min, omega_max, filename):
                     edgecolor='k', markerscale=5, ncol=3, labelspacing=0, columnspacing=0, title='$q_y$')
     leg.get_frame().set_linewidth(0.5)
 
-    plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/notes/figures/" + filename, bbox_inches='tight', dpi=300)
+    plt.show()
+
+
+def plot_2d_q_specific(name):
+
+    domain = np.linspace(1, 7, 11, endpoint=True)
+
+    SR_max_mean = []
+    SR_max_std = []
+
+    for j in domain:
+
+        print(j)
+
+        omega = []
+        SR = []
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_18_ratio_1.000000_qy_0" \
+               f".omega_{-7.5-5/(2**j):.6g}-{-7.5+5/(2**j):.6g}_eps_{0.0001/(2**(j-1)):.6g}.sr.cut"
+        with open('stripped_files/' + file, 'r') as csvfile:
+            plots = csv.reader(csvfile, delimiter=' ')
+            for row in plots:
+                omega.append(float(row[0]))
+                SR.append(float(row[1]))
+
+        # print("mean(SR) = ", np.mean(SR))
+        # print("std(SR) = ", np.std(SR))
+
+        omega_max = []
+        sr_max = []
+        for i, entry in enumerate(omega):
+            if SR[i] > SR[i - 1] and SR[i] > SR[i + 1]:
+                omega_max += [1]
+                sr_max += [SR[i]]
+            else:
+                omega_max += [0]
+
+        SR_max_mean += [np.mean(sr_max)]
+        # print("mean(SR_max) = ", np.mean(sr_max))
+        SR_max_std += [np.std(sr_max)]
+        # print("std(SR_max) = ", np.std(sr_max))
+
+    log_scale_factors = []
+    log_SR_max_mean = []
+    log_SR_max_std = []
+
+    for i, j in enumerate(domain):
+        log_scale_factors += [np.log2(1/(2**(j-1)))]
+        log_SR_max_mean += [np.log2(SR_max_mean[i])]
+        log_SR_max_std += [np.log2(SR_max_std[i])]
+
+    ax = plt.subplot(111)
+    # marker = itertools.cycle(('1', '2', '3', '4', ',', '+', '.', 'o', '*', '^', 'v', '>', '<', 'X', '_', 'd', '|', 'H'))
+    #
+    ax.set_xlabel('$\log_2(\mathrm{range}(\omega)/\mathrm{range}(\omega_0))$')
+    # ax.set_ylabel('$\log_2(\sigma_{S_{\mathrm{max}}})$')
+    # ax.set_ylim(bottom=0)
+
+    ax.scatter(log_scale_factors, log_SR_max_mean, label="$\log_2(\mu_{S_{\mathrm{max}}})$")
+    ax.scatter(log_scale_factors, log_SR_max_std, label="$\log_2(\sigma_{S_{\mathrm{max}}})$")
+
+    leg = ax.legend(loc='lower left', handletextpad=0, borderpad=0.4, framealpha=1,
+                    edgecolor='k', markerscale=1, ncol=1, labelspacing=0, columnspacing=0)
+    leg.get_frame().set_linewidth(0.5)
+
     plt.show()
 
 
@@ -2754,18 +2823,20 @@ if __name__ == "__main__":
 
     # Coulomb and Laughlin tests #######################################################################################
     #
-    name = "coulomb_0_plus_Coulomb_V1"
-    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
-    name = "coulomb_0_plus_Coulomb_V0V1"
-    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
-    name = "coulomb_0_plus_Coulomb_V1V3"
-    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
-    name = "coulomb_0_plus_Coulomb_V0V1V2V3"
-    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
-    name = "coulomb_0_plus_Coulomb_V0V1V2V3_trunc_2"
+    # name = "coulomb_0_plus_Coulomb_V1"
+    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    # name = "coulomb_0_plus_Coulomb_V0V1"
+    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    # name = "coulomb_0_plus_Coulomb_V1V3"
+    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    # name = "coulomb_0_plus_Coulomb_V0V1V2V3"
+    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    # name = "coulomb_0_plus_Coulomb_V0V1V2V3_trunc_2"
+    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    name = "coulomb"
     plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # name = "coulomb"
-    # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    # plot_2d_q_specific(name)
     # name = "coulomb_swap"
     # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     # name = "coulomb_plus_zero"

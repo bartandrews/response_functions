@@ -209,5 +209,5 @@ if __name__ == "__main__":
     fig.text(0.05, 0.44, "(c)", fontsize=12)
     fig.text(0.49, 0.44, "(d)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/cpt_y1_n_6.png", bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/cpt_y1_n_6.png", bbox_inches='tight', dpi=300)
     plt.show()

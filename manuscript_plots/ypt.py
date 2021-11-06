@@ -110,5 +110,5 @@ if __name__ == "__main__":
     ax4.text(0.73, 0.85, "$\lambda=10$", fontsize=11, transform=ax4.transAxes, bbox=props)
     ax5.text(0.69, 0.85, "$\lambda=100$", fontsize=11, transform=ax5.transAxes, bbox=props)
 
-    plt.savefig("/home/bart/Documents/papers/SR/ypt.png", bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/ypt.png", bbox_inches='tight', dpi=300)
     plt.show()

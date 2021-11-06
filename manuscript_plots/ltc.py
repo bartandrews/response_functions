@@ -213,7 +213,7 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy):
     im = axis.scatter(lbl, omega, c=sr_max, s=1, norm=colors.LogNorm(vmin=min(sr_max), vmax=max(sr_max)),
                     cmap=plt.cm.Reds)
     cb = fig.colorbar(im, ax=axis, pad=0.02)
-    cb.set_label("$S$", labelpad=-1)
+    cb.set_label("$S_\mathrm{max}$", labelpad=-1, y=0.55)
     axis.set_xlim([0.00001, 10])
     axis.set_ylim([0.00001, 10])
 
@@ -442,12 +442,12 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy):
 
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$n(\\Omega)$')
+    axis.set_ylabel('$n(S_\mathrm{max})$')
 
     axis.axhline(np.mean(len_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(len_values) - np.std(len_values), np.mean(len_values) + np.std(len_values), alpha=0.1, color='red')
 
-    axis.text(0.3, 0.85, "$\\langle n(\\Omega) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.23, 0.835, "$\\langle n(S_\mathrm{{max}}) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(len_values), sd=np.std(len_values), fontsize=10), transform=axis.transAxes)
 
     # ax.set_xticks(np.arange(2, 40, 2))
@@ -550,12 +550,12 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy):
 
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\\bar{S}/10^{4}$')
+    axis.set_ylabel('$\\bar{S}_\mathrm{max}/10^{4}$')
 
     axis.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
 
-    axis.text(0.27, 0.85, "$\\langle \\bar{{S}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.19, 0.83, "$\\langle \\bar{{S}}_\mathrm{{max}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10), transform=axis.transAxes)
 
     # ax.set_xticks(np.arange(2, 40, 2))
