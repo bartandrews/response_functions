@@ -35,7 +35,7 @@ def line_of_best_fit(axis, x_list, y_list, xval=0.25, yval=1.2):
 
 # Coulomb and Laughlin tests ###########################################################################################
 
-def plot_2d_q(name, numb_qy, omega_min, omega_max, filename):
+def plot_2d_q(name, numb_qy, omega_min, omega_max, filename, epsilon):
 
     ax = plt.subplot(111)
 
@@ -44,8 +44,8 @@ def plot_2d_q(name, numb_qy, omega_min, omega_max, filename):
     for qy_value in [0]:  # range(numb_qy)
         omega = []
         SR = []
-        file = f"fermions_torus_spec_resp_kysym_{name}_n_7_2s_21_ratio_1.000000_qy_{qy_value}" \
-               f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_8_2s_24_ratio_1.000000_qy_{qy_value}" \
+               f".omega_{omega_min}-{omega_max}_eps_{epsilon}.sr.cut"
         with open('stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
@@ -2834,7 +2834,7 @@ if __name__ == "__main__":
     # name = "coulomb_0_plus_Coulomb_V0V1V2V3_trunc_2"
     # plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
     name = "coulomb"
-    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png")
+    plot_2d_q(name, 18, omega_min=-100, omega_max=100, filename=f"{name}_2d.png", epsilon="3.125e-06")
     # name = "coulomb"
     # plot_2d_q_specific(name)
     # name = "coulomb_swap"
