@@ -385,5 +385,5 @@ if __name__ == "__main__":
     fig.text(0.02, 0.33, "(d)", fontsize=12)
     fig.text(0.49, 0.33, "(e)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_n_7.png", bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_n_7.png", bbox_inches='tight', dpi=300)
     plt.show()

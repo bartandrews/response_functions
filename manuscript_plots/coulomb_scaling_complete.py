@@ -45,14 +45,13 @@ def plot_coulomb(axis, omega_min, omega_max, epsilon):
 
     omega = []
     SR = []
-    file = f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0" \
-           f".omega_-100-100_eps_{epsilon}.sr.cut"
+    file = f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0" \
+           f".omega_{omega_min}-{omega_max}_eps_{epsilon}.sr.cut"
     with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
         plots = csv.reader(csvfile, delimiter=' ')
         for row in plots:
-            if omega_min < float(row[0]) < omega_max:
-                omega.append(float(row[0])+10)
-                SR.append(float(row[1]))
+            omega.append(float(row[0])+10)
+            SR.append(float(row[1]))
     axis.scatter(omega, SR, s=1, marker=next(marker))
 
     axis.set_xlabel('$\omega$')
@@ -72,14 +71,13 @@ def plot_coulomb_zoomed(axis, omega_min, omega_max, epsilon):
 
     omega = []
     SR = []
-    file = f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0" \
-           f".omega_-100-100_eps_{epsilon}.sr.cut"
+    file = f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0" \
+           f".omega_{omega_min}-{omega_max}_eps_{epsilon}.sr.cut"
     with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
         plots = csv.reader(csvfile, delimiter=' ')
         for row in plots:
-            if omega_min < float(row[0]) < omega_max:
-                omega.append(float(row[0])+10)
-                SR.append(float(row[1])/2)
+            omega.append(float(row[0])+10)
+            SR.append(float(row[1])/2)
     axis.scatter(omega, SR, s=1, marker=next(marker))
 
     axis.set_xlabel('$\omega$')
@@ -93,25 +91,24 @@ def plot_coulomb_zoomed(axis, omega_min, omega_max, epsilon):
 
 def plot_2d_q_specific(axis):
 
-    domain = np.linspace(1, 7, 7, endpoint=True)
+    domain = np.linspace(0, 5.4, 55, endpoint=True)
 
     SR_max_mean = []
     SR_max_std = []
 
     for j in domain:
 
-        print(j)
+        print("scaling factor = ", j)
 
         omega = []
         SR = []
-        file = f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0" \
-               f".omega_-100-100_eps_{0.0001/(2**(j-1)):.6g}.sr.cut"
+        file = f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0" \
+               f".omega_{-7.5-2.5/(2**j):.6g}-{-7.5+2.5/(2**j):.6g}_eps_{0.0001/(2**j):.6g}.sr.cut"
         with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                if -7.5-5/(2**j) < float(row[0]) < -7.5+5/(2**j):
-                    omega.append(float(row[0]))
-                    SR.append(float(row[1]))
+                omega.append(float(row[0]))
+                SR.append(float(row[1]))
 
         # print("mean(SR) = ", np.mean(SR))
         # print("std(SR) = ", np.std(SR))
@@ -135,7 +132,7 @@ def plot_2d_q_specific(axis):
     log_SR_max_std = []
 
     for i, j in enumerate(domain):
-        log_scale_factors += [np.log2(1/(2**(j-1)))]
+        log_scale_factors += [np.log2(1/(2**j))]
         log_SR_max_mean += [np.log2(SR_max_mean[i])]
         log_SR_max_std += [np.log2(SR_max_std[i])]
 
@@ -152,8 +149,8 @@ def plot_2d_q_specific(axis):
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
     leg.get_frame().set_linewidth(0.5)
 
-    line_of_best_fit(axis, log_scale_factors[:-2], log_SR_max_mean[:-2], xval=0.05, yval=0.05, name="m_\mu")
-    line_of_best_fit(axis, log_scale_factors[:-2], log_SR_max_std[:-2], xval=0.29, yval=0.855, name="m_\sigma")
+    line_of_best_fit(axis, log_scale_factors[:-15], log_SR_max_mean[:-15], xval=0.05, yval=0.05, name="m_\mu")
+    line_of_best_fit(axis, log_scale_factors[:-15], log_SR_max_std[:-15], xval=0.29, yval=0.855, name="m_\sigma")
 
 
 def plot_2d_gap_omega_res_max(axis):
@@ -164,20 +161,19 @@ def plot_2d_gap_omega_res_max(axis):
     omega_max_gap_mean = []
     # omega_max_gap_std = []
 
-    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_0.0001.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_2.5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.25e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_6.25e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_3.125e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.5625e-06.sr.cut"]):
+    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-10--5_eps_0.0001.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.75--6.25_eps_5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.125--6.875_eps_2.5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.8125--7.1875_eps_1.25e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.65625--7.34375_eps_6.25e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.57812--7.42188_eps_3.125e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.53906--7.46094_eps_1.5625e-06.sr.cut"]):
 
         with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                if -7.5 - 5 / (2 ** (i+1)) < float(row[0]) < -7.5 + 5 / (2 ** (i+1)):
-                    omega.append(float(row[0])+10)
-                    SR.append(float(row[1]))
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
 
         omega_max = []
         for i, entry in enumerate(omega):
@@ -216,21 +212,20 @@ def plot_2d_nbr_omega_res_max(axis):
     name_list = []
     lbl = []
 
-    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_0.0001.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_2.5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.25e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_6.25e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_3.125e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.5625e-06.sr.cut"]):
+    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-10--5_eps_0.0001.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.75--6.25_eps_5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.125--6.875_eps_2.5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.8125--7.1875_eps_1.25e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.65625--7.34375_eps_6.25e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.57812--7.42188_eps_3.125e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.53906--7.46094_eps_1.5625e-06.sr.cut"]):
 
         with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                if -7.5 - 5 / (2 ** (i + 1)) < float(row[0]) < -7.5 + 5 / (2 ** (i + 1)):
-                    omega.append(float(row[0])+10)
-                    SR.append(float(row[1]))
-                    lbl += [0 - i]
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [0 - i]
 
     print(np.shape(omega), np.shape(SR), np.shape(lbl))
 
@@ -295,21 +290,20 @@ def plot_2d_mean_S_res_max(axis):
     name_list = []
     lbl = []
 
-    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_0.0001.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_2.5e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.25e-05.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_6.25e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_3.125e-06.sr.cut",
-                              f"fermions_torus_spec_resp_kysym_coulomb_n_7_2s_21_ratio_1.000000_qy_0.omega_-100-100_eps_1.5625e-06.sr.cut"]):
+    for i, file in enumerate([f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-10--5_eps_0.0001.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.75--6.25_eps_5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-8.125--6.875_eps_2.5e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.8125--7.1875_eps_1.25e-05.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.65625--7.34375_eps_6.25e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.57812--7.42188_eps_3.125e-06.sr.cut",
+                              f"fermions_torus_spec_resp_kysym_coulomb_n_6_2s_18_ratio_1.000000_qy_0.omega_-7.53906--7.46094_eps_1.5625e-06.sr.cut"]):
 
         with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                if -7.5 - 5 / (2 ** (i + 1)) < float(row[0]) < -7.5 + 5 / (2 ** (i + 1)):
-                    omega.append(float(row[0])+10)
-                    SR.append(float(row[1]))
-                    lbl += [0-i]
+                omega.append(float(row[0])+10)
+                SR.append(float(row[1]))
+                lbl += [0-i]
 
     print(np.shape(omega), np.shape(SR), np.shape(lbl))
 
@@ -349,7 +343,7 @@ def plot_2d_mean_S_res_max(axis):
     axis.text(0.645, 0.2, "$\pm{sd:.3g}$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10), transform=axis.transAxes)
 
-    region = Polygon(((-7, -0.03), (-4, -0.03), (-4, 0.3), (-7, 0.3)), fc=(0, 0, 0, 0.2))
+    region = Polygon(((-7, -0.03), (-4, -0.03), (-4, 0.03), (-7, 0.03)), fc=(0, 0, 0, 0.2))
     axis.add_artist(region)
 
     # ax.set_xticks(np.arange(2, 40, 2))
@@ -363,7 +357,7 @@ if __name__ == "__main__":
     gs = gridspec.GridSpec(3, 2, hspace=0.4, wspace=0.4)
 
     ax0 = plt.subplot(gs[0])
-    plot_coulomb(ax0, omega_min=-10.0, omega_max=-5.0, epsilon=0.0001)
+    plot_coulomb(ax0, omega_min=-10, omega_max=-5, epsilon=0.0001)
     ax1 = plt.subplot(gs[1])
     plot_2d_q_specific(ax1)
     ax2 = plt.subplot(gs[2])
@@ -391,5 +385,5 @@ if __name__ == "__main__":
     fig.text(0.02, 0.33, "(d)", fontsize=12)
     fig.text(0.49, 0.33, "(e)", fontsize=12)
 
-    # plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_n_7_2.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_complete.png", bbox_inches='tight', dpi=300)
     plt.show()
