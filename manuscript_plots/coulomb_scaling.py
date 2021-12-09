@@ -184,6 +184,7 @@ def plot_2d_gap_omega_res_max(axis):
         omega_max_gap_mean += [np.log2(np.mean(omega_gaps))]
         # omega_max_gap_std += [np.log2(np.std(omega_gaps))]
 
+    print(omega_max_gap_mean)
     # print(omega_max_gap_std)
 
     axis.plot([0, -1, -2, -3, -4, -5, -6], omega_max_gap_mean, 'x', markersize=4, label="$\log_2\langle \Delta\Omega \\rangle$", c="C2")
@@ -385,5 +386,5 @@ if __name__ == "__main__":
     fig.text(0.02, 0.33, "(d)", fontsize=12)
     fig.text(0.49, 0.33, "(e)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling.png", bbox_inches='tight', dpi=300)
+    # plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling.png", bbox_inches='tight', dpi=300)
     plt.show()
