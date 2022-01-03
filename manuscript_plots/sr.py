@@ -55,7 +55,7 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
 
     if name=="V1":
         leg = axis.legend(loc='upper right', handletextpad=0, borderpad=0.2, framealpha=1,
-                          edgecolor=None, markerscale=5, ncol=10, labelspacing=0, columnspacing=0, bbox_to_anchor=(2.2, 1.4), title='$q_y$')
+                          edgecolor=None, markerscale=5, ncol=10, labelspacing=0, columnspacing=0, bbox_to_anchor=(2.2, 1.4), title='$k_y$')
         leg.get_frame().set_linewidth(0.5)
 
 
@@ -75,5 +75,5 @@ if __name__ == "__main__":
     fig.text(0.405, 0.8, "$V_1$", fontsize=11)
     fig.text(0.79, 0.8, "Coulomb", fontsize=11)
 
-    # plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)
     plt.show()

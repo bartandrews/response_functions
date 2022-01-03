@@ -550,12 +550,12 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy):
 
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\\bar{S}_\mathrm{max}/10^{4}$')
+    axis.set_ylabel('$\mu_{S_\mathrm{max}}/10^{4}$')
 
     axis.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
 
-    axis.text(0.19, 0.83, "$\\langle \\bar{{S}}_\mathrm{{max}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.17, 0.825, "$\\langle \mu_{{S_\mathrm{{max}}}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10), transform=axis.transAxes)
 
     # ax.set_xticks(np.arange(2, 40, 2))
