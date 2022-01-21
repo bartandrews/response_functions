@@ -2,7 +2,7 @@ import numpy as np
 
 if __name__ == "__main__":
 
-    n_val = 10  # number of particles (INPUT)
+    n_val = 8  # number of particles (INPUT)
     ky_val = n_val/2 if n_val % 2 == 0 else 0  # corresponding ky value for ground state
 
     file = open(f"coulomb_scaling_script.sh", "w")

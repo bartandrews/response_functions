@@ -28,7 +28,7 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
     for qy_value in range(numb_qy):
         omega = []
         SR = []
-        file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qy_{qy_value}" \
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_6_2s_{numb_qy}_ratio_1.000000_qx_3_qy_{qy_value}" \
                f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
         with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
@@ -75,5 +75,5 @@ if __name__ == "__main__":
     fig.text(0.405, 0.8, "$V_1$", fontsize=11)
     fig.text(0.79, 0.8, "Coulomb", fontsize=11)
 
-    plt.savefig("/home/bart/Documents/papers/SR/sr.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR/sr_qx_3.png", bbox_inches='tight', dpi=300)
     plt.show()

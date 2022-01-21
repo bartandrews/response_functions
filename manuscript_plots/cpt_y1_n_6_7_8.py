@@ -60,7 +60,7 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$\\omega$')
     axis.zaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_zlabel('$S/10^3$')
+    axis.set_zlabel('$I/10^3$')
     axis.set_facecolor((0, 0, 0, 0))
     if axis == ax0:  # N=6
         axis.set_position(Bbox.from_bounds(0, 0.64, 0.44, 0.28))

@@ -93,7 +93,7 @@ def plot_2d_Smax_mean_omega(axis):
             log_SR_max_mean += [np.log2(SR_max_mean[i])]
             log_SR_max_std += [np.log2(SR_max_std[i])]
 
-        axis.set_ylabel('$\log_2(\mu_{S_{\mathrm{max}}})$')
+        axis.set_ylabel('$\log_2(\mu_{I_{\mathrm{max}}})$')
 
 
         if lambda_val < 0.1:
@@ -185,7 +185,7 @@ def plot_2d_Smax_std_omega(axis):
             log_SR_max_std += [np.log2(SR_max_std[i])]
 
         axis.set_xlabel('$\log_2(\mathrm{range}(\omega)/\mathrm{range}(\omega_0))$')
-        axis.set_ylabel('$\log_2(\sigma_{S_{\mathrm{max}}})$')
+        axis.set_ylabel('$\log_2(\sigma_{I_{\mathrm{max}}})$')
 
         if lambda_val < 0.1:
             axis.scatter(log_scale_factors, log_SR_max_std, s=10, c=f"C{lambda_idx}",
@@ -422,7 +422,7 @@ def plot_2d_Smax_mean_lambda_finite_size(axis):
         axis.scatter([np.log10(i) for i in lambda_list], log_SR_max_mean[N_val], s=10, c=f"C{N_val}", label=f"${N}$")
         axis.plot([np.log10(i) for i in lambda_list], log_SR_max_mean[N_val], c=f"C{N_val}")
 
-    axis.set_ylabel('$\log_2(\mu_{S_\mathrm{max}})$')
+    axis.set_ylabel('$\log_2(\mu_{I_\mathrm{max}})$')
     axis.set_xlabel('$\log \lambda$')
 
     leg = axis.legend(loc='upper left', handletextpad=0, borderpad=0.2, framealpha=1,

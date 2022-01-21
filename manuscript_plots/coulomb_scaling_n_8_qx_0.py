@@ -14,9 +14,9 @@ plt.rc('text.latex', preamble=r'\usepackage{amsmath}')
 
 def plot_2d_q_specific(axis):
 
-    domain = np.array([np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 4.7, 48, endpoint=True), np.linspace(0, 6, 61, endpoint=True)], dtype=object)
+    domain = np.array([np.linspace(0, 4.7, 48, endpoint=True)], dtype=object)
 
-    particles = [6, 7, 8, 9]
+    particles = [8]
 
     log_SR_max_mean = np.zeros(len(particles), dtype=object)
     log_SR_max_std = np.zeros(len(particles), dtype=object)
@@ -30,12 +30,8 @@ def plot_2d_q_specific(axis):
 
         for j in domain[N_idx]:
 
-            if N == 6:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_{-7.5-2.5/(2**j):.6g}-{-7.5+2.5/(2**j):.6g}_eps_{0.0001/(2**j):.6g}.sr.cut"
-            else:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
+            file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qx_0_qy_0" \
+                   f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
 
             omega = []
             SR = []
@@ -58,14 +54,14 @@ def plot_2d_q_specific(axis):
             log_SR_max_mean[N_idx] += [np.log2(np.mean(sr_max))]
             log_SR_max_std[N_idx] += [np.log2(np.std(sr_max))]
 
-    axis.plot(1, 10, '.', marker='x', markersize=4, label="$\log_2(\mu_{I_{\mathrm{max}}})$", c='k')
-    axis.plot(1, 10, '.', marker='^', markersize=4, label="$\log_2(\sigma_{I_{\mathrm{max}}})$", c='k')
+    axis.plot(1, 10, '.', marker='x', markersize=4, label="$\log_2(\mu_{S_{\mathrm{max}}})$", c='k')
+    axis.plot(1, 10, '.', marker='^', markersize=4, label="$\log_2(\sigma_{S_{\mathrm{max}}})$", c='k')
 
     for N_idx, N in enumerate(particles):
         axis.plot([np.log2(1 / (2 ** j)) for j in domain[N_idx]], log_SR_max_mean[N_idx], '.', marker='x',
-                  markersize=4, c=f'C{N_idx}')
+                  markersize=4, c=f'C2')
         axis.plot([np.log2(1 / (2 ** j)) for j in domain[N_idx]], log_SR_max_std[N_idx], '.', marker='^',
-                  markersize=4, c=f'C{N_idx}')
+                  markersize=4, c=f'C2')
 
     axis.set_xlim([-6, 0])
     axis.tick_params('x', direction='in', bottom=True)
@@ -74,32 +70,32 @@ def plot_2d_q_specific(axis):
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
     leg.get_frame().set_linewidth(0.5)
 
-    # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
-    # axis.add_artist(region)
+    region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
+    axis.add_artist(region)
 
-    xvalues = [np.log2(1/(2**j)) for j in domain[3]]
-    result = stats.linregress(xvalues, log_SR_max_mean[3])
+    xvalues = [np.log2(1/(2**j)) for j in domain[0]][:-6]
+    result = stats.linregress(xvalues, log_SR_max_mean[0][:-6])
     m = result.slope
     m_err = result.stderr
     c = result.intercept
     R = result.rvalue
     axis.plot(xvalues, [m*i+c for i in xvalues], '-', c='k', zorder=-1, lw=0.5)
-    axis.text(-5.3, 8, f"$m_\mu={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
+    axis.text(-5, 9, f"$m_\mu={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
 
-    xvalues = [np.log2(1/(2**j)) for j in domain[3]]
-    result = stats.linregress(xvalues, log_SR_max_std[3])
+    xvalues = [np.log2(1/(2**j)) for j in domain[0]][:-6]
+    result = stats.linregress(xvalues, log_SR_max_std[0][:-6])
     m = result.slope
     m_err = result.stderr
     c = result.intercept
     R = result.rvalue
     axis.plot(xvalues, [m * i + c for i in xvalues], '-', c='k', zorder=-1, lw=0.5)
-    axis.text(-5.3, 7.4, f"$m_\sigma={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
+    axis.text(-5, 8.4, f"$m_\sigma={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
 
 
 def plot_2d_gap_omega_res_max(axis):
 
-    domain = np.array([np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 4.7, 48, endpoint=True), np.linspace(0, 6, 61, endpoint=True)], dtype=object)
-    particles = [6, 7, 8, 9]
+    domain = np.array([np.linspace(0, 4.7, 48, endpoint=True)], dtype=object)
+    particles = [8]
     omega_max_gap_mean = np.zeros(len(particles), dtype=object)
 
     for N_idx, N in enumerate(particles):
@@ -108,12 +104,8 @@ def plot_2d_gap_omega_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if N == 6:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_{-7.5-2.5/(2**j):.6g}-{-7.5+2.5/(2**j):.6g}_eps_{0.0001/(2**j):.6g}.sr.cut"
-            else:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
+            file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qx_0_qy_0" \
+                   f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
 
             omega = []
             SR = []
@@ -140,7 +132,7 @@ def plot_2d_gap_omega_res_max(axis):
               markersize=4, c="k")
 
     for N_idx, N in enumerate(particles):
-        axis.plot([-i for i in domain[N_idx]], omega_max_gap_mean[N_idx], 'v', markersize=4, c=f"C{N_idx}")
+        axis.plot([-i for i in domain[N_idx]], omega_max_gap_mean[N_idx], 'v', markersize=4, c=f"C2")
 
     axis.tick_params('x', direction='in', bottom=True)
     plt.setp(axis.get_xticklabels(), visible=False)
@@ -150,14 +142,13 @@ def plot_2d_gap_omega_res_max(axis):
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
     leg.get_frame().set_linewidth(0.5)
 
-    # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
-    # axis.add_artist(region)
+    region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
+    axis.add_artist(region)
 
 
 def plot_2d_nbr_omega_res_max(axis):
-    domain = np.array([np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 6, 61, endpoint=True),
-                       np.linspace(0, 4.7, 48, endpoint=True), np.linspace(0, 6, 61, endpoint=True)], dtype=object)
-    particles = [6, 7, 8, 9]
+    domain = np.array([np.linspace(0, 4.7, 48, endpoint=True)], dtype=object)
+    particles = [8]
     lbl_values = np.zeros(len(particles), dtype=object)
     number_of_peaks = np.zeros(len(particles), dtype=object)
 
@@ -168,12 +159,8 @@ def plot_2d_nbr_omega_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if N == 6:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_{-7.5-2.5/(2**j):.6g}-{-7.5+2.5/(2**j):.6g}_eps_{0.0001/(2**j):.6g}.sr.cut"
-            else:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
+            file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qx_0_qy_0" \
+                   f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
 
             omega = []
             SR = []
@@ -199,20 +186,19 @@ def plot_2d_nbr_omega_res_max(axis):
         lbl_values[N_idx] = sorted(list(set(lbl)), reverse=True)
 
     for N_idx, N in enumerate(particles):
-        axis.plot(lbl_values[N_idx], number_of_peaks[N_idx], '.', markersize=4, c=f'C{N_idx}')
+        axis.plot(lbl_values[N_idx], number_of_peaks[N_idx], '.', markersize=4, c=f'C2')
 
     axis.tick_params('x', direction='in', bottom=True)
     plt.setp(axis.get_xticklabels(), visible=False)
-    axis.set_ylabel('$n(I_\mathrm{max})$')
+    axis.set_ylabel('$n(S_\mathrm{max})$')
 
-    # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
-    # axis.add_artist(region)
+    region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
+    axis.add_artist(region)
 
 
 def plot_2d_mean_S_res_max(axis):
-    domain = np.array([np.linspace(0, 6, 61, endpoint=True), np.linspace(0, 6, 61, endpoint=True),
-                       np.linspace(0, 4.7, 48, endpoint=True), np.linspace(0, 6, 61, endpoint=True)], dtype=object)
-    particles = [6, 7, 8, 9]
+    domain = np.array([np.linspace(0, 4.7, 48, endpoint=True)], dtype=object)
+    particles = [8]
     lbl_values = np.zeros(len(particles), dtype=object)
     S_max_bar = np.zeros(len(particles), dtype=object)
 
@@ -223,12 +209,8 @@ def plot_2d_mean_S_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if N == 6:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_{-7.5-2.5/(2**j):.6g}-{-7.5+2.5/(2**j):.6g}_eps_{0.0001/(2**j):.6g}.sr.cut"
-            else:
-                file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qy_0" \
-                       f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
+            file = f"fermions_torus_spec_resp_kysym_coulomb_n_{N:g}_2s_{3*N:g}_ratio_1.000000_qx_0_qy_0" \
+                   f".omega_-100-100_eps_{0.0001/(2**j):.6g}.sr.cut"
 
             omega = []
             SR = []
@@ -254,20 +236,17 @@ def plot_2d_mean_S_res_max(axis):
         lbl_values[N_idx] = sorted(list(set(lbl)), reverse=True)
 
     for N_idx, N in enumerate(particles):
-        axis.plot(lbl_values[N_idx], S_max_bar[N_idx], '.', markersize=4, c=f'C{N_idx}')
+        axis.plot(lbl_values[N_idx], S_max_bar[N_idx], '.', markersize=4, c=f'C2')
 
     axis.set_xlabel('$\log_2(\mathrm{range}(\omega)/\mathrm{range}(\omega_0))$', labelpad=10)
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\mu_{I_\mathrm{max}}\epsilon$')
+    axis.set_ylabel('$\mu_{S_\mathrm{max}}\epsilon$')
 
-    # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
-    # axis.add_artist(region)
+    region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
+    axis.add_artist(region)
 
-    custom_lines = [Line2D([0], [0], color='C0', lw=4),
-                    Line2D([0], [0], color='C1', lw=4),
-                    Line2D([0], [0], color='C2', lw=4),
-                    Line2D([0], [0], color='C3', lw=4)]
-    axis.legend(custom_lines, ['$6$', '$7$', '$8$', '$9$'], bbox_to_anchor=(0.815, 5.6), ncol=4, title="$N$")
+    custom_lines = [Line2D([0], [0], color='C2', lw=4)]
+    axis.legend(custom_lines, ['$N=8$, $q_x=0$'], bbox_to_anchor=(0.65, 5.6), ncol=3)
 
 
 if __name__ == "__main__":
@@ -289,5 +268,5 @@ if __name__ == "__main__":
     fig.text(0.02, 0.405, "(c)", fontsize=12)
     fig.text(0.02, 0.25, "(d)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_complete_n_9.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR/coulomb_scaling_n_8_qx_0.png", bbox_inches='tight', dpi=300)
     plt.show()

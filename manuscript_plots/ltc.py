@@ -62,7 +62,7 @@ def plot_2d_ltc_early(axis, numb_qy, omega_min, omega_max):
         axis.scatter(omega, SR, s=0.5, label=f"${1*(i+1):.2g}$", marker=next(marker))
 
     axis.set_xlabel('$\omega$')
-    axis.set_ylabel('$S/10^3$')
+    axis.set_ylabel('$I/10^3$')
     axis.set_ylim(0)
     axis.legend(loc='upper center', handletextpad=0, borderpad=0.2, framealpha=1,
                 edgecolor=None, markerscale=5,
@@ -95,7 +95,7 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%.2g$'))
     axis.set_ylabel('$\\omega$')
-    axis.set_zlabel('$S/10^3$')
+    axis.set_zlabel('$I/10^3$')
     axis.set_zlim(0)
     axis.set_position(Bbox.from_bounds(0.48, 0.67, 0.415, 0.31))
     axis.tick_params(axis='both', which='major', pad=0)
@@ -213,7 +213,7 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy):
     im = axis.scatter(lbl, omega, c=sr_max, s=1, norm=colors.LogNorm(vmin=min(sr_max), vmax=max(sr_max)),
                     cmap=plt.cm.Reds)
     cb = fig.colorbar(im, ax=axis, pad=0.02)
-    cb.set_label("$S_\mathrm{max}$", labelpad=-1, y=0.55)
+    cb.set_label("$I_\mathrm{max}$", labelpad=-1, y=0.55)
     axis.set_xlim([0.00001, 10])
     axis.set_ylim([0.00001, 10])
 
@@ -442,12 +442,12 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy):
 
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$n(S_\mathrm{max})$')
+    axis.set_ylabel('$n(I_\mathrm{max})$')
 
     axis.axhline(np.mean(len_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(len_values) - np.std(len_values), np.mean(len_values) + np.std(len_values), alpha=0.1, color='red')
 
-    axis.text(0.23, 0.835, "$\\langle n(S_\mathrm{{max}}) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.23, 0.835, "$\\langle n(I_\mathrm{{max}}) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(len_values), sd=np.std(len_values), fontsize=10), transform=axis.transAxes)
 
     # ax.set_xticks(np.arange(2, 40, 2))
@@ -550,12 +550,12 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy):
 
     axis.set_xlabel('$\log \\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\mu_{S_\mathrm{max}}/10^{4}$')
+    axis.set_ylabel('$\mu_{I_\mathrm{max}}/10^{4}$')
 
     axis.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
 
-    axis.text(0.17, 0.825, "$\\langle \mu_{{S_\mathrm{{max}}}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.17, 0.825, "$\\langle \mu_{{I_\mathrm{{max}}}} \\rangle / 10^4 = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10), transform=axis.transAxes)
 
     # ax.set_xticks(np.arange(2, 40, 2))

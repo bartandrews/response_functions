@@ -39,7 +39,7 @@ def plot_2d_lpv17(axis, numb_qy, omega_min, omega_max):
 
     axis.set_xlabel('$\omega$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%.3g$'))
-    axis.set_ylabel('$S/10^3$')
+    axis.set_ylabel('$I/10^3$')
     axis.legend(loc='upper right', handletextpad=0, borderpad=0.4, framealpha=1,
               edgecolor=None, markerscale=3,
               fontsize=10, ncol=1, labelspacing=0, columnspacing=0, title='$\log \\alpha$')
@@ -71,7 +71,7 @@ def plot_3d_lpv17(axis, numb_qy, omega_min, omega_max):
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%.2g$'))
     axis.zaxis.set_major_formatter(FormatStrFormatter('$%.2g$'))
     axis.set_ylabel('$\\omega$')
-    axis.set_zlabel('$S/10^3$')
+    axis.set_zlabel('$I/10^3$')
 
     axis.set_yticks(np.arange(-0.1, 0.11, 0.1))
 
