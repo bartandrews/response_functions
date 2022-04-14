@@ -82,6 +82,11 @@ def plot_2d_q_specific(axis):
     leg = axis.legend(loc='upper right', handletextpad=0, borderpad=0.4, framealpha=0,
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
     leg.get_frame().set_linewidth(0.5)
+    axis.add_artist(leg)
+
+    h = [plt.plot([], '.', marker="x", markersize=4, color="C2", alpha=0.5)[0]]
+    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{max}}})$, $N=8$, $q_x=0$"], loc=(0.555, 0.75), handletextpad=0,
+               borderpad=0.4, framealpha=0, edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
 
     # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
     # axis.add_artist(region)
@@ -324,5 +329,5 @@ if __name__ == "__main__":
     fig.text(0.02, 0.405, "(c)", fontsize=12)
     fig.text(0.02, 0.25, "(d)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR_paper/SR/coulomb_scaling_complete_n_9_2.png", bbox_inches='tight', dpi=300)
+    plt.savefig("/home/bart/Documents/papers/SR_paper/SR/coulomb_scaling_complete_n_9_3.png", bbox_inches='tight', dpi=300)
     plt.show()
