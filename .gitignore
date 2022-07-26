@@ -3,3 +3,5 @@
 **/*.sr*
 **/nohup.out*
 vectors/**/*.vec*
+./newest
+./test
