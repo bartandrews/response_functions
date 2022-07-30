@@ -24,7 +24,7 @@ The spectral functions are generated in 3 steps.
 
 For the V1 interaction, we use the command:
 
-- ``TwoBodyGeneric -p 6 -l 18 --interaction-name V1 --interaction-file pseudopotentials_V1.dat -g --use-lapack --eigenstate -n 1``
+- ``TwoBodyGeneric -p 6 -l 18 --interaction-name V1 --interaction-file ../../pseudopotentials/plane/pseudopotentials_V1.dat -g --use-lapack --eigenstate -n 1``
 
 For the Coulomb interaction, we use the command:
 
@@ -47,17 +47,17 @@ By convention, we take the first of these ground states. We then compute the spe
 For the V1 interaction, we use the command:
 
 - ``cd laughlin``
-- ``SpectralResponse ../../vectors/laughlin/fermions_torus_kysym_V1_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --interaction-name V1 --interaction-file ../../pseudopotentials/plane/pseudopotentials_V1.dat -S --processors 4 -m 12000``
+- ``SpectralResponse ../../vectors/laughlin/fermions_torus_kysym_V1_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --interaction-name V1 --interaction-file ../../pseudopotentials/plane/pseudopotentials_V1.dat``
 
 For the Coulomb interaction, we use the command:
 
 - ``cd coulomb``
-- ``SpectralResponse ../../vectors/coulomb/fermions_torus_kysym_coulomb_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --use-coulomb --coulomb-strength 1 -S --processors 4 -m 12000``
+- ``SpectralResponse ../../vectors/coulomb/fermions_torus_kysym_coulomb_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --use-coulomb --coulomb-strength 1``
 
 For the Yukawa interaction (with lambda=1), we use the command:
 
 - ``cd yukawa``
-- ``SpectralResponse ../../vectors/yukawa/fermions_torus_kysym_yukawa-1_plus_V1_scale_0_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --use-coulomb --coulomb-strength 1 --yukawa-mass 1 -S --processors 4 -m 12000``
+- ``SpectralResponse ../../vectors/yukawa/fermions_torus_kysym_yukawa-1_plus_V1_scale_0_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --use-coulomb --coulomb-strength 1 --yukawa-mass 1``
 
 4) After the spectral response functions have been generated in the ``FQHETorusSpectralResponse``, we can extract the largest 10,000 values from the files and place them in ``stripped_files`` (with a flat directory structure).
 
@@ -65,11 +65,16 @@ For the Yukawa interaction (with lambda=1), we use the command:
 
 This makes the spectral response functions amenable to plotting.
 
-5) We can then plot the spectral response functions by running ``plot_2d.py`` or ``plot_3d.py`` after uncommenting the plots of interest.
+5) We can then plot the spectral response functions by running e.g. ``sr.py``.
 
 .. image:: test/figures/sr_latest.png
 	:align: center
 	:width: 80%
+
+Benchmarking for the sphere
+---------------------------
+
+
 
 References
 ----------
