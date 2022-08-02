@@ -1,21 +1,9 @@
-import numpy as np
-import matplotlib as mpl
-import matplotlib.pyplot as plt
-from matplotlib.transforms import Bbox
-from mpl_toolkits.mplot3d import Axes3D
-import random
 import csv
-import heapq
-import glob
 import itertools
+import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.ticker import FormatStrFormatter
-import matplotlib.ticker as ticker
-import matplotlib.colors as colors
-from scipy import stats
-from scipy.special import hyperu
-# from mpmath import sqrt, pi, gamma, hyperu, fac, fac2, exp
-import mpmath as mp
+
 
 plt.rc('text', usetex=True)
 plt.rc('text.latex', preamble=r'\usepackage{amsmath}')
@@ -57,7 +45,7 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
     # if name == "V1":
     #     axis.set_xlim([-0.015, 0.015])
 
-    if name=="V1":
+    if name == "V1":
         leg = axis.legend(loc='upper right', handletextpad=0, borderpad=0.2, framealpha=1,
                           edgecolor=None, markerscale=5, ncol=10, labelspacing=0, columnspacing=0, bbox_to_anchor=(2.2, 1.4), title='$q_y$')
         leg.get_frame().set_linewidth(0.5)

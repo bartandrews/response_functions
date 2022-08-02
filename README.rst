@@ -67,14 +67,9 @@ This makes the spectral response functions amenable to plotting.
 
 5) We can then plot the spectral response functions by running e.g. ``sr.py``.
 
-.. image:: test/figures/sr_latest.png
+.. image:: debug/test/figures/sr_newest_fermions_TargetSpace_0.png
 	:align: center
 	:width: 80%
-
-Benchmarking for the sphere
----------------------------
-
-
 
 References
 ----------

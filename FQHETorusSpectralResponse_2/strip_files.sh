@@ -4,7 +4,7 @@ NUMB_VALUES=10000
 
 mkdir -p stripped_files
 
-find . -type f -name "*.sr" -not -path "*/coulomb_scaling/n_8_qx_0/*" -print0 | while read -d $'\0' file
+find . -type f -name "*.sr" -not -path "*/old/*" -print0 | while read -d $'\0' file
 do
 	if ! [ -e stripped_files/"$(basename "$file")".cut ]; then
 	  echo "$file"
