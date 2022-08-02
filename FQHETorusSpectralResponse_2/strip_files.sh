@@ -4,14 +4,7 @@ NUMB_VALUES=10000
 
 mkdir -p stripped_files
 
-#for f in *2s_18*.sr
-#do
-#    sort -r -g -k 2 $f > stripped_files/$f.sorted
-#    head -${NUMB_VALUES} stripped_files/$f.sorted > stripped_files/$f.cut
-#    rm -rf stripped_files/$f.sorted
-#done
-
-find . -type f -name "*.sr" -not -path "*/old/*" -not -path "*/fixed_Ky_3/*" -print0 | while read -d $'\0' file
+find . -type f -name "*.sr" -not -path "*/coulomb_scaling/n_8_qx_0/*" -print0 | while read -d $'\0' file
 do
 	if ! [ -e stripped_files/"$(basename "$file")".cut ]; then
 	  echo "$file"

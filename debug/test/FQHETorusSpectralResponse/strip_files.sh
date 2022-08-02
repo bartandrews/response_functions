@@ -11,7 +11,7 @@ mkdir -p stripped_files
 #    rm -rf stripped_files/$f.sorted
 #done
 
-find . -type f -name "*.sr" -not -path "*/coulomb/*" -not -path "*/laughlin/*" -not -path "*/coulomb_full_precision/*" -not -path "*/laughlin_full_precision/*" -print0 | while read -d $'\0' file
+find . -type f -name "*.sr" -not -path "*/coulomb_newest/*" -not -path "*/laughlin_newest/*" -not -path "*/coulomb_full_precision/*" -not -path "*/laughlin_full_precision/*" -print0 | while read -d $'\0' file
 do
 	if ! [ -e stripped_files/"$(basename "$file")".cut ]; then
 	  echo "$file"

@@ -1,5 +1,3 @@
-import numpy as np
-
 if __name__ == "__main__":
 
     Coulomb = "~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusFermionsCoulomb"
@@ -10,25 +8,15 @@ if __name__ == "__main__":
     file.write("#!/bin/bash\n\n")
     file.write("runs() {\n")
 
-    for numb_part in [7]:
+    for n_val in [6]:
         for lamb_exp in [-4, -3, -2, -1, 0, 1, 2]:
-            for alpha_exp in [0]:
-                lamb = 10 ** lamb_exp
+            lamb = 10 ** lamb_exp
+            for alpha_exp in [-4, -3, -2, -1, 0]:
                 alpha = 10 ** alpha_exp
-                file.write(f"echo {Coulomb} -p {numb_part:g} -l {3*numb_part:g} "
-                           f"--landau-level 0 --coulomb-strength {alpha:.5g} --yukawa-mass {lamb:.5g} "
-                           f"--perturbation-file {response_functions}/pseudopotentials/plane/pseudopotentials_V1.dat --perturbation-strength {1-alpha:.5g} "
-                           f"-g --use-lapack --eigenstate -n 1\n")
+                file.write(f"echo {Coulomb} -p {n_val:g} -l {3*n_val:g} --landau-level 0 --coulomb-strength {alpha:.5g} --yukawa-mass {lamb:.5g} --perturbation-file {response_functions}/pseudopotentials/plane/pseudopotentials_V1.dat --perturbation-strength {1-alpha:.5g} -g --use-lapack --eigenstate -n 1 -m 8000\n")
+
     file.write("}\n")
     file.write("export -f runs\n")
     file.write("runs | nohup nice parallel -j 4 &\n")
-    # file.write("\n")
-    # file.write("# delete all vec files other than ky=3\n")
-    # file.write("mkdir safe\n")
-    # file.write("mv *.dat safe\n")
-    # file.write("mv *ky_3* safe\n")
-    # file.write("rm *.vec\n")
-    # file.write("mv safe/* .\n")
-    # file.write("rm -r safe\n")
 
     file.close()
