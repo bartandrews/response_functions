@@ -1,5 +1,6 @@
 import csv
 import itertools
+import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.gridspec as gridspec
 from matplotlib.ticker import FormatStrFormatter
@@ -30,12 +31,21 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
                 SR.append(float(row[1])/100)
         axis.scatter(omega, SR, s=1, label=qy_value, marker=next(marker))
 
-        # if name == 'coulomb' and qy_value == 0:
-        #     print("lower quartile = ", np.percentile(omega, 25))
-        #     print("median = ", np.median(omega))
-        #     print("upper quartile = ", np.percentile(omega, 75))
+        if name == 'coulomb' and qy_value == 0:
 
-    axis.set_xlabel('$\omega - \omega_0$')
+            orig_min = min(omega)
+            orig_max = max(omega)
+            # original_min = min(omega)-10-1.3711444004959
+            # original_max = max(omega)-10-1.3711444004959
+            # print("original min = ", original_min)
+            print("lower quartile = ", np.percentile(omega, 25))
+            print("median = ", np.median(omega))
+            print("upper quartile = ", np.percentile(omega, 75))
+            # print("original max = ", original_max)
+            # print(f"mean = {(original_max+original_min)/2:.6g}+-{(original_max-original_min)/2:.6g}")
+            print(f"mean = {(orig_max + orig_min) / 2:.6g}+-{(orig_max - orig_min) / 2:.6g}")
+
+    axis.set_xlabel('$\omega-\omega_0$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$I/10^2$')

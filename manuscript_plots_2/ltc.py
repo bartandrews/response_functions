@@ -37,9 +37,9 @@ def plot_2d_ltc_early(axis, numb_qy, omega_min, omega_max):
 
     marker = itertools.cycle(('1', '2', '3', '4', ',', '+', '.', 'o', '*', '^', 'v', '>', '<', 'X', '_', 'd', '|', 'H'))
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 11)):
-        alpha = 10**alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 11)):
+        # alpha = 10**alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -47,7 +47,7 @@ def plot_2d_ltc_early(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy/3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy/3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -63,14 +63,14 @@ def plot_2d_ltc_early(axis, numb_qy, omega_min, omega_max):
             for row in data:
                 omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1])/100)
-        axis.scatter(omega, SR, s=0.5, label=f"${alpha_exp:.2g}$", marker=next(marker))
+        axis.scatter(omega, SR, s=0.5, label=f"${alpha:.2g}$", marker=next(marker))
 
     axis.set_xlabel('$\omega-\omega_0$')
     axis.set_ylabel('$I/10^2$')
     axis.set_ylim(0)
     axis.legend(loc='upper center', handletextpad=0, borderpad=0.2, framealpha=1, edgecolor=None, markerscale=5,
                 fontsize=10, ncol=4, labelspacing=0, columnspacing=0, bbox_to_anchor=(0.45, 1.54),
-                title='$\\log\\alpha$')
+                title='$\\alpha$')
 
 
 def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
@@ -78,9 +78,9 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
     omega = []
     SR = []
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 11)):
-        alpha = 10 ** alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 11)):
+        # alpha = 10 ** alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -88,7 +88,7 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy/3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy/3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -104,12 +104,12 @@ def plot_3d_ltc(axis, numb_qy, omega_min, omega_max):
                 SR.append(float(row[1])/100)
 
     log_alpha = []
-    for alpha_exp in np.linspace(-4, 0, 11):
-        log_alpha += [alpha_exp]*10000
+    for alpha in np.linspace(10**-4, 1, 11):
+        log_alpha += [alpha]*10000
 
     axis.scatter(log_alpha, omega, SR, s=0.5, c=log_alpha, cmap='brg')
 
-    axis.set_xlabel('$\\log \\alpha$')
+    axis.set_xlabel('$\\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%.2g$'))
     axis.set_ylabel('$\omega-\omega_0$')
     axis.set_zlabel('$I/10^2$')
@@ -141,9 +141,9 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy, omega_min, omega_max):
     SR = []
     lbl = []
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 41)):
-        alpha = 10 ** alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 41)):
+        # alpha = 10 ** alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -151,7 +151,7 @@ def plot_2d_ltc_complete_res_max(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy / 3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy / 3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -200,9 +200,9 @@ def plot_2d_ltc_slope_res_max(axis, numb_qy, omega_min, omega_max):
     SR = []
     lbl = []
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 41)):
-        alpha = 10 ** alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 41)):
+        # alpha = 10 ** alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -210,7 +210,7 @@ def plot_2d_ltc_slope_res_max(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy / 3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy / 3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -224,7 +224,8 @@ def plot_2d_ltc_slope_res_max(axis, numb_qy, omega_min, omega_max):
             for row in plots:
                 omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                # lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10**-4 + i*(1-10**-4)/41]
 
     omega_max = []
     sr_max = []
@@ -272,9 +273,9 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy, omega_min, omega_max):
     SR = []
     lbl = []
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 41)):
-        alpha = 10 ** alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 41)):
+        # alpha = 10 ** alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -282,7 +283,7 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy / 3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy / 3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -296,7 +297,8 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy, omega_min, omega_max):
             for row in plots:
                 omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                # lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10**-4 + i*(1-10**-4)/41]
 
     omega_max = []
     sr_max = []
@@ -319,18 +321,18 @@ def plot_2d_ltc_nbr_omega_res_max(axis, numb_qy, omega_min, omega_max):
         len_val = len(omega_set)
         len_values += [len_val]
 
-    log_lbl_values = [np.log10(i) for i in lbl_values]
+    # log_lbl_values = [np.log10(i) for i in lbl_values]
 
-    axis.scatter(log_lbl_values, len_values, s=5)
+    axis.scatter(lbl_values, len_values, s=5)
 
-    axis.set_xlabel('$\log \\alpha$')
+    axis.set_xlabel('$\\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$n(I_\mathrm{max})$')
 
     axis.axhline(np.mean(len_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(len_values) - np.std(len_values), np.mean(len_values) + np.std(len_values), alpha=0.1, color='red')
 
-    axis.text(0.1, 0.835, "$\\langle n(I_\mathrm{{max}}) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.2, 0.1, "$\\langle n(I_\mathrm{{max}}) \\rangle = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(len_values), sd=np.std(len_values), fontsize=10), transform=axis.transAxes)
 
 
@@ -340,9 +342,9 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy, omega_min, omega_max):
     SR = []
     lbl = []
 
-    for i, alpha_exp in enumerate(np.linspace(-4, 0, 41)):
-        alpha = 10 ** alpha_exp
-        if alpha_exp != 0:
+    for i, alpha in enumerate(np.linspace(10**-4, 1, 41)):
+        # alpha = 10 ** alpha_exp
+        if alpha != 1:
             name = f"coulomb_{alpha:.5g}_plus_V1_scale_{1 - alpha:.5g}"
         else:
             name = f"coulomb_plus_V1_scale_0"
@@ -350,7 +352,7 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy, omega_min, omega_max):
         # get ground state energy (from dat file)
         energies = []
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-        with open(vectors + f'/ltc/n_{numb_qy / 3:g}/' + dat_file, 'r') as csvfile:
+        with open(vectors + f'/ltc/n_{numb_qy / 3:g}_linear/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 if row[0].isnumeric():
@@ -364,7 +366,8 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy, omega_min, omega_max):
             for row in plots:
                 omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1]))
-                lbl += [10 ** (-4 + i * 0.1)]
+                # lbl += [10 ** (-4 + i * 0.1)]
+                lbl += [10**-4 + i*(1-10**-4)/41]
 
     omega_max = []
     sr_max = []
@@ -390,16 +393,17 @@ def plot_2d_ltc_mean_S_res_max(axis, numb_qy, omega_min, omega_max):
 
     log_lbl_values = [np.log10(i) for i in lbl_values]
 
-    axis.scatter(log_lbl_values, sr_values, s=5)
+    axis.scatter(lbl_values, sr_values, s=5)
 
-    axis.set_xlabel('$\log \\alpha$')
+    axis.set_xlabel('$\\alpha$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$\mu_{I_\mathrm{max}}/10^{3}$')
+    axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
 
     axis.axhline(np.mean(sr_values), c='k', zorder=-1, linewidth=0.5, linestyle='--')
     axis.axhspan(np.mean(sr_values)-np.std(sr_values), np.mean(sr_values)+np.std(sr_values), alpha=0.1, color='red')
 
-    axis.text(0.05, 0.1, "$\\langle \mu_{{I_\mathrm{{max}}}} \\rangle / 10^3 = {mean:.3g}\pm {sd:.3g}$".format(
+    axis.text(0.1, 0.82, "$\\langle \mu_{{I_\mathrm{{max}}}} \\rangle / 10^3 = {mean:.3g}\pm {sd:.3g}$".format(
         mean=np.mean(sr_values), sd=np.std(sr_values), fontsize=10), transform=axis.transAxes)
 
 

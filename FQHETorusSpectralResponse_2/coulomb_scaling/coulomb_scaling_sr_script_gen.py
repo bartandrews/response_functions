@@ -8,8 +8,8 @@ if __name__ == "__main__":
 
     # INPUT
     n_val = 8  # number of particles
-    mid = -10.6  # midpoint
-    std = 0.5  # deviation
+    mid = -10.6995  # midpoint
+    std = 0.6095  # deviation
 
     ky_val = n_val / 2 if n_val % 2 == 0 else 0  # corresponding ky value for ground state
 

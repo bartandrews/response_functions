@@ -1,51 +1,52 @@
+import csv
 import numpy as np
-import matplotlib as mpl
 import matplotlib.pyplot as plt
+import matplotlib.gridspec as gridspec
+import matplotlib.ticker as ticker
 from matplotlib.transforms import Bbox
 from mpl_toolkits.mplot3d import Axes3D
-import random
-import csv
-import heapq
-import glob
-import itertools
-import matplotlib.gridspec as gridspec
 from matplotlib.ticker import FormatStrFormatter
-import matplotlib.ticker as ticker
-import matplotlib.colors as colors
-from scipy import stats
-from scipy.special import hyperu
-# from mpmath import sqrt, pi, gamma, hyperu, fac, fac2, exp
-import mpmath as mp
 
 plt.rc('text', usetex=True)
 plt.rc('text.latex', preamble=r'\usepackage{amsmath}')
 
-gs_energies = [0, 0.8038915015368, 2.5450951336863, 3.5508171154871, 4.6025076304994, 5.4976061943948]
-coulomb_gs_energy = -1.371144400495800
+vectors = "/home/bart/PycharmProjects/response_functions/vectors_2/"
+stripped_files = "/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse_2/stripped_files/"
 
 
 def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
 
     omega = []
     SR = []
-
     name_list = []
     lbl = []
 
     if axis == ax0:
-        for i in range(2, 9, 2):
-            name_list += [f"coulomb_0_plus_YukawaPlaneL1_trunc_{i}"]
+        for i in range(2, 11, 2):
+            name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
     else:
         for i in range(2, int(numb_qy/2)+2, 2):
-            name_list += [f"coulomb_0_plus_YukawaPlaneL1_trunc_{i}"]
+            name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
 
     for i, name in enumerate(name_list):
-        file = f"fermions_torus_spec_resp_kysym_{name}_n_{int(numb_qy/3)}_2s_{numb_qy}_ratio_1.000000_qy_0" \
-               f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
-        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
-            plots = csv.reader(csvfile, delimiter=' ')
-            for row in plots:
-                omega.append(float(row[0])+10)
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000_qy_0" \
+               f".omega_{omega_min:g}-{omega_max:g}_eps_0.0001.sr.cut"
+
+        # get ground state energy (from dat file)
+        energies = []
+        dir_name = f"n_{numb_qy/3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy/3:g}_lambda_1"
+        dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
+        with open(vectors + f'ypt/{dir_name}/' + dat_file, 'r') as csvfile:
+            data = csv.reader(csvfile, delimiter=' ')
+            for row in data:
+                if row[0].isnumeric():
+                    energies.append(float(row[1]))
+            ground = min(energies)
+
+        with open(stripped_files + file, 'r') as csvfile:
+            data = csv.reader(csvfile, delimiter=' ')
+            for row in data:
+                omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1])/1000)
                 lbl += [2*i+1]
 
@@ -54,11 +55,11 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     axis.set_xlabel('$\\beta$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     if axis == ax0:
-        axis.set_xticks(np.arange(1, 8, 2))
+        axis.set_xticks(np.arange(1, 10, 2))
     else:
         axis.set_xticks(np.arange(1, int(numb_qy / 2) + 1, 2))
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\\omega$')
+    axis.set_ylabel('$\\omega-\omega_0$')
     axis.zaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_zlabel('$I/10^3$')
     axis.set_facecolor((0, 0, 0, 0))
@@ -72,8 +73,6 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     axis.xaxis.labelpad = 0
     axis.yaxis.labelpad = 0
     axis.zaxis.labelpad = 0
-
-    #ax.set_xticks(np.arange(0, 1.05, 0.1))
 
     # Get rid of colored axes planes
     # First remove fill
@@ -97,18 +96,30 @@ def plot_2d_cpt_variable_full_box(axis, numb_qy, omega_min, omega_max):
     data_to_plot = []
 
     for i in range(2, int(numb_qy/2)+2, 2):  # 40
-        name_list += [f"coulomb_0_plus_YukawaPlaneL1_trunc_{i}"]
+        name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
         lbl += [i-1]
 
     for i, name in enumerate(name_list):
         omega = []
         SR = []
-        file = f"fermions_torus_spec_resp_kysym_{name}_n_{int(numb_qy/3)}_2s_{numb_qy}_ratio_1.000000_qy_0" \
-               f".omega_{omega_min}-{omega_max}_eps_0.0001.sr.cut"
-        with open('/home/bart/PycharmProjects/response_functions/FQHETorusSpectralResponse/stripped_files/' + file, 'r') as csvfile:
+        file = f"fermions_torus_spec_resp_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000_qy_0" \
+               f".omega_{omega_min:g}-{omega_max:g}_eps_0.0001.sr.cut"
+
+        # get ground state energy (from dat file)
+        energies = []
+        dir_name = f"n_{numb_qy / 3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy / 3:g}_lambda_1"
+        dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
+        with open(vectors + f'ypt/{dir_name}/' + dat_file, 'r') as csvfile:
+            data = csv.reader(csvfile, delimiter=' ')
+            for row in data:
+                if row[0].isnumeric():
+                    energies.append(float(row[1]))
+            ground = min(energies)
+
+        with open(stripped_files + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                omega.append(float(row[0])+10)
+                omega.append(float(row[0])+10-ground)
                 SR.append(float(row[1]))
             data_to_plot += [omega]
 
@@ -120,22 +131,22 @@ def plot_2d_cpt_variable_full_box(axis, numb_qy, omega_min, omega_max):
 
     axis.set_xlabel('$\\beta$')
     if axis == ax1:
-        axis.set_xlim([0, 8])
+        axis.set_xlim([0, 10])
     elif axis == ax3:
         axis.set_xlim([0, 10])
     elif axis == ax5:
         axis.set_xlim([0, 12])
-    axis.set_ylabel('$\omega$')
+    axis.set_ylabel('$\omega-\omega_0$')
 
     if axis == ax1:  # N=6
-        axis.axhline(2.264645, c='r', ls='--', zorder=-10, lw=1)
-        axis.axhspan(1.4346474999999996, 2.7407224999999995, alpha=0.1, color='red')
-    elif axis == ax3:  # N=7
-        axis.axhline(2.2973350206643, c='r', ls='--', zorder=-10, lw=1)
-        axis.axhspan(1.8468075206813, 2.8201225206444995, alpha=0.1, color='red')
-    elif axis == ax5:  # N=8
-        axis.axhline(2.8096450206449, c='r', ls='--', zorder=-10, lw=1)
-        axis.axhspan(2.3537575206621, 3.1959425206303003, alpha=0.1, color='red')
+        axis.axhline(0.6871294212729, c='r', ls='--', zorder=-10, lw=1)
+        axis.axhspan(0.5519419212778998, 0.8634669212659001, alpha=0.1, color='red')
+    # elif axis == ax3:  # N=7
+    #     axis.axhline(2.2973350206643, c='r', ls='--', zorder=-10, lw=1)
+    #     axis.axhspan(1.8468075206813, 2.8201225206444995, alpha=0.1, color='red')
+    # elif axis == ax5:  # N=8
+    #     axis.axhline(2.8096450206449, c='r', ls='--', zorder=-10, lw=1)
+    #     axis.axhspan(2.3537575206621, 3.1959425206303003, alpha=0.1, color='red')
 
     axis.xaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
     axis.yaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
@@ -147,17 +158,17 @@ if __name__ == "__main__":
     gs = gridspec.GridSpec(3, 2, hspace=0.4, wspace=0.4)
 
     ax0 = plt.subplot(gs[0], projection='3d')
-    plot_3d_cpt_variable_full(ax0, 18, omega_min=-100, omega_max=100)
+    plot_3d_cpt_variable_full(ax0, 18, omega_min=-20, omega_max=0)
     ax1 = plt.subplot(gs[1])
-    plot_2d_cpt_variable_full_box(ax1, 18, omega_min=-100, omega_max=100)
-    ax2 = plt.subplot(gs[2], projection='3d')
-    plot_3d_cpt_variable_full(ax2, 21, omega_min=-100, omega_max=100)
-    ax3 = plt.subplot(gs[3])
-    plot_2d_cpt_variable_full_box(ax3, 21, omega_min=-100, omega_max=100)
-    ax4 = plt.subplot(gs[4], projection='3d')
-    plot_3d_cpt_variable_full(ax4, 24, omega_min=-100, omega_max=100)
-    ax5 = plt.subplot(gs[5])
-    plot_2d_cpt_variable_full_box(ax5, 24, omega_min=-100, omega_max=100)
+    plot_2d_cpt_variable_full_box(ax1, 18, omega_min=-20, omega_max=0)
+    # ax2 = plt.subplot(gs[2], projection='3d')
+    # plot_3d_cpt_variable_full(ax2, 21, omega_min=-20, omega_max=0)
+    # ax3 = plt.subplot(gs[3])
+    # plot_2d_cpt_variable_full_box(ax3, 21, omega_min=-20, omega_max=0)
+    # ax4 = plt.subplot(gs[4], projection='3d')
+    # plot_3d_cpt_variable_full(ax4, 24, omega_min=-20, omega_max=0)
+    # ax5 = plt.subplot(gs[5])
+    # plot_2d_cpt_variable_full_box(ax5, 24, omega_min=-20, omega_max=0)
 
     fig.text(0.02, 0.875, "(a)", fontsize=12)
     fig.text(0.2, 0.845, "$N=6$", fontsize=12)
@@ -171,5 +182,5 @@ if __name__ == "__main__":
     fig.text(0.2, 0.275, "$N=8$", fontsize=12)
     fig.text(0.49, 0.31, "(f)", fontsize=12)
 
-    plt.savefig("/home/bart/Documents/papers/SR/cpt_y1_n_6_7_8.png", bbox_inches='tight', dpi=300)
+    plt.savefig("cpt_y1_n_6_7_8.png", bbox_inches='tight', dpi=300)
     plt.show()
