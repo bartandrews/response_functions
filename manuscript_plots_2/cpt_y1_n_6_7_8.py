@@ -22,10 +22,13 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     lbl = []
 
     if axis == ax0:
-        for i in range(2, 11, 2):
+        for i in range(2, 8+6, 2):
             name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
-    else:
-        for i in range(2, int(numb_qy/2)+2, 2):
+    elif axis == ax2:
+        for i in range(2, 10+6, 2):
+            name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
+    elif axis == ax4:
+        for i in range(2, 12+6, 2):
             name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
 
     for i, name in enumerate(name_list):
@@ -34,7 +37,7 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
 
         # get ground state energy (from dat file)
         energies = []
-        dir_name = f"n_{numb_qy/3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy/3:g}_lambda_1"
+        dir_name = f"n_{numb_qy/3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy/3:g}_lambda_0.1"
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
         with open(vectors + f'ypt/{dir_name}/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
@@ -55,9 +58,11 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     axis.set_xlabel('$\\beta$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     if axis == ax0:
-        axis.set_xticks(np.arange(1, 10, 2))
-    else:
-        axis.set_xticks(np.arange(1, int(numb_qy / 2) + 1, 2))
+        axis.set_xticks(np.arange(1, 8+4, 2))
+    elif axis == ax2:
+        axis.set_xticks(np.arange(1, 10+4, 2))
+    elif axis == ax4:
+        axis.set_xticks(np.arange(1, 12+4, 2))
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$\\omega-\omega_0$')
     axis.zaxis.set_major_formatter(FormatStrFormatter('$%g$'))
@@ -95,7 +100,7 @@ def plot_2d_cpt_variable_full_box(axis, numb_qy, omega_min, omega_max):
     lbl = []
     data_to_plot = []
 
-    for i in range(2, int(numb_qy/2)+2, 2):  # 40
+    for i in range(2, int(numb_qy/2)+6, 2):  # 40
         name_list += [f"coulomb_0_plus_YukawaPlaneL0.1_trunc_{i}"]
         lbl += [i-1]
 
@@ -107,7 +112,7 @@ def plot_2d_cpt_variable_full_box(axis, numb_qy, omega_min, omega_max):
 
         # get ground state energy (from dat file)
         energies = []
-        dir_name = f"n_{numb_qy / 3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy / 3:g}_lambda_1"
+        dir_name = f"n_{numb_qy / 3:g}/l0.1" if numb_qy == 18 else f"n_{numb_qy / 3:g}_lambda_0.1"
         dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
         with open(vectors + f'ypt/{dir_name}/' + dat_file, 'r') as csvfile:
             data = csv.reader(csvfile, delimiter=' ')
@@ -131,22 +136,22 @@ def plot_2d_cpt_variable_full_box(axis, numb_qy, omega_min, omega_max):
 
     axis.set_xlabel('$\\beta$')
     if axis == ax1:
-        axis.set_xlim([0, 10])
+        axis.set_xlim([0, 8+4])
     elif axis == ax3:
-        axis.set_xlim([0, 10])
+        axis.set_xlim([0, 10+4])
     elif axis == ax5:
-        axis.set_xlim([0, 12])
+        axis.set_xlim([0, 12+4])
     axis.set_ylabel('$\omega-\omega_0$')
 
     if axis == ax1:  # N=6
         axis.axhline(0.6871294212729, c='r', ls='--', zorder=-10, lw=1)
         axis.axhspan(0.5519419212778998, 0.8634669212659001, alpha=0.1, color='red')
-    # elif axis == ax3:  # N=7
-    #     axis.axhline(2.2973350206643, c='r', ls='--', zorder=-10, lw=1)
-    #     axis.axhspan(1.8468075206813, 2.8201225206444995, alpha=0.1, color='red')
-    # elif axis == ax5:  # N=8
-    #     axis.axhline(2.8096450206449, c='r', ls='--', zorder=-10, lw=1)
-    #     axis.axhspan(2.3537575206621, 3.1959425206303003, alpha=0.1, color='red')
+    elif axis == ax3:  # N=7
+        axis.axhline(0.8657296828534005, c='r', ls='--', zorder=-10, lw=1)
+        axis.axhspan(0.7107321828593998, 1.0466871828474007, alpha=0.1, color='red')
+    elif axis == ax5:  # N=8
+        axis.axhline(1.0395240344364, c='r', ls='--', zorder=-10, lw=1)
+        axis.axhspan(0.8753165344434004, 1.2261315344294004, alpha=0.1, color='red')
 
     axis.xaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
     axis.yaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
@@ -161,14 +166,14 @@ if __name__ == "__main__":
     plot_3d_cpt_variable_full(ax0, 18, omega_min=-20, omega_max=0)
     ax1 = plt.subplot(gs[1])
     plot_2d_cpt_variable_full_box(ax1, 18, omega_min=-20, omega_max=0)
-    # ax2 = plt.subplot(gs[2], projection='3d')
-    # plot_3d_cpt_variable_full(ax2, 21, omega_min=-20, omega_max=0)
-    # ax3 = plt.subplot(gs[3])
-    # plot_2d_cpt_variable_full_box(ax3, 21, omega_min=-20, omega_max=0)
-    # ax4 = plt.subplot(gs[4], projection='3d')
-    # plot_3d_cpt_variable_full(ax4, 24, omega_min=-20, omega_max=0)
-    # ax5 = plt.subplot(gs[5])
-    # plot_2d_cpt_variable_full_box(ax5, 24, omega_min=-20, omega_max=0)
+    ax2 = plt.subplot(gs[2], projection='3d')
+    plot_3d_cpt_variable_full(ax2, 21, omega_min=-20, omega_max=0)
+    ax3 = plt.subplot(gs[3])
+    plot_2d_cpt_variable_full_box(ax3, 21, omega_min=-20, omega_max=0)
+    ax4 = plt.subplot(gs[4], projection='3d')
+    plot_3d_cpt_variable_full(ax4, 24, omega_min=-20, omega_max=0)
+    ax5 = plt.subplot(gs[5])
+    plot_2d_cpt_variable_full_box(ax5, 24, omega_min=-20, omega_max=0)
 
     fig.text(0.02, 0.875, "(a)", fontsize=12)
     fig.text(0.2, 0.845, "$N=6$", fontsize=12)

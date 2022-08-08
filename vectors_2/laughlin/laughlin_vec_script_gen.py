@@ -8,7 +8,7 @@ if __name__ == "__main__":
     file.write("#!/bin/bash\n\n")
     file.write("runs() {\n")
 
-    for n_val in [6]:
+    for n_val in [8]:
         file.write(f"echo {TwoBodyGeneric} -p {n_val:g} -l {3*n_val:g} --interaction-name V1 --interaction-file {response_functions}/pseudopotentials/plane/pseudopotentials_V1.dat -g --use-lapack --eigenstate -n 1 -m 8000\n")
 
     file.write("}\n")

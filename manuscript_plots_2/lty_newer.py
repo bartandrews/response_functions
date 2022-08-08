@@ -180,8 +180,8 @@ def plot_2d_lty_omega_range_alpha(axis, numb_qy, omega_min_val, omega_max_val):
 
 def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
-    for alpha_exp in [-4, -3, -2, -1, 0]:
-        alpha = 10 ** alpha_exp
+    for alpha in np.linspace(10**-4, 1, 11):  # [-4, -3, -2, -1, 0]
+        # alpha = 10 ** alpha_exp
 
         omega = []
         SR = []
@@ -191,7 +191,7 @@ def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
         for lamb_exp in np.linspace(-4, 2, 7):
             lamb = 10 ** lamb_exp
-            if alpha_exp != 0:
+            if alpha != 1:
                 name = f"yukawa-{lamb:g}_{alpha:.5g}_plus_V1_scale_{1-alpha:.5g}"
             else:
                 name = f"yukawa-{lamb:g}_plus_V1_scale_0"
@@ -199,7 +199,7 @@ def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
             # get ground state energy (from dat file)
             energies = []
-            dir_name = f"n_{numb_qy / 3:g}" if numb_qy == 18 else f"n_{numb_qy / 3:g}_alpha_1"
+            dir_name = f"n_{numb_qy / 3:g}_linear" if numb_qy == 18 else f"n_{numb_qy / 3:g}_alpha_1"
             dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
             with open(vectors + f'lty/{dir_name}/' + dat_file, 'r') as csvfile:
                 data = csv.reader(csvfile, delimiter=' ')
@@ -241,7 +241,7 @@ def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
         log_lbl_values = [np.log10(i) for i in lbl_values]
         # log_lbl_values = lbl_values
 
-        axis.scatter(log_lbl_values, log_mean_vals, s=10, label=f"${np.log10(alpha):g}$")
+        axis.scatter(log_lbl_values, log_mean_vals, s=10, label=f"${alpha:.1g}$")
         axis.plot(log_lbl_values, log_mean_vals)
 
     # axis.set_xlabel('$\\log \\lambda$')
@@ -251,7 +251,7 @@ def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
     leg = axis.legend(loc='center', handletextpad=0, borderpad=0.2, framealpha=1,
                       edgecolor=None, markerscale=1, ncol=4, labelspacing=0, columnspacing=0,
-                      bbox_to_anchor=(0.5, 1.35), title='$\log\\alpha$')
+                      bbox_to_anchor=(0.5, 1.42), title='$\\alpha$')
     leg.get_frame().set_linewidth(0.5)
 
     plt.setp(axis.get_yticklabels(), visible=False)
@@ -265,8 +265,8 @@ def plot_2d_lty_omega_mean_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
 def plot_2d_lty_omega_range_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
-    for alpha_exp in [-4, -3, -2, -1, 0]:
-        alpha = 10 ** alpha_exp
+    for alpha in np.linspace(10**-4, 1, 11):  # [-4, -3, -2, -1, 0]
+        # alpha = 10 ** alpha_exp
 
         omega = []
         SR = []
@@ -276,7 +276,7 @@ def plot_2d_lty_omega_range_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
         for lamb_exp in np.linspace(-4, 2, 7):
             lamb = 10 ** lamb_exp
-            if alpha_exp != 0:
+            if alpha != 1:
                 name = f"yukawa-{lamb:g}_{alpha:g}_plus_V1_scale_{1-alpha:g}"
             else:
                 name = f"yukawa-{lamb:g}_plus_V1_scale_0"
@@ -284,7 +284,7 @@ def plot_2d_lty_omega_range_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
             # get ground state energy (from dat file)
             energies = []
-            dir_name = f"n_{numb_qy/3:g}" if numb_qy == 18 else f"n_{numb_qy/3:g}_alpha_1"
+            dir_name = f"n_{numb_qy/3:g}_linear" if numb_qy == 18 else f"n_{numb_qy/3:g}_alpha_1"
             dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
             with open(vectors + f'lty/{dir_name}/' + dat_file, 'r') as csvfile:
                 data = csv.reader(csvfile, delimiter=' ')
@@ -328,7 +328,7 @@ def plot_2d_lty_omega_range_lambda(axis, numb_qy, omega_min_val, omega_max_val):
         log_lbl_values = [np.log10(i) for i in lbl_values]
         # log_lbl_values = lbl_values
 
-        axis.scatter(log_lbl_values, log_omega_range, s=10, label=f"${np.log10(alpha):g}$")
+        axis.scatter(log_lbl_values, log_omega_range, s=10, label=f"${alpha:.1g}$")
         axis.plot(log_lbl_values, log_omega_range)
 
     axis.set_xlabel('$\\log\\lambda$')
@@ -456,10 +456,10 @@ if __name__ == "__main__":
     plot_2d_lty_omega_range_alpha(ax1, 18, omega_min_val=-20, omega_max_val=0)
     ax2 = plt.subplot(upper_right_cell, sharey=ax0)
     plot_2d_lty_omega_mean_lambda(ax2, 18, omega_min_val=-20, omega_max_val=0)
-    # ax3 = plt.subplot(lower_right_cell, sharex=ax2, sharey=ax1)
-    # plot_2d_lty_omega_range_lambda(ax3, 18, omega_min_val=-20, omega_max_val=0)
-    # ax4 = plt.subplot(bottom_grid)
-    # plot_2d_lty_omega_mean_lambda_finite(ax4, omega_min_val=-20, omega_max_val=0)
+    ax3 = plt.subplot(lower_right_cell, sharex=ax2, sharey=ax1)
+    plot_2d_lty_omega_range_lambda(ax3, 18, omega_min_val=-20, omega_max_val=0)
+    ax4 = plt.subplot(bottom_grid)
+    plot_2d_lty_omega_mean_lambda_finite(ax4, omega_min_val=-20, omega_max_val=0)
 
     fig.text(0.11, 0.95, "(a)", fontsize=12)
     fig.text(0.495, 0.95, "(b)", fontsize=12)
