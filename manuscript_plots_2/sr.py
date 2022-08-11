@@ -17,18 +17,39 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
 
     marker = itertools.cycle(('1', '2', '3', '4', ',', '+', '.', 'o', '*', '^', 'v', '>', '<', 'X', '_', 'd', '|', 'H'))
 
-    # get ground state energy (from dat file)
+    # get laughlin gap and ground state energy (from dat file)
     energies = []
-    dir_name = "laughlin" if name == "V1" else "coulomb"
-    dat_file = f"fermions_torus_kysym_{name}_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
-    with open(vectors + f'{dir_name}/n_{numb_qy/3:g}/' + dat_file, 'r') as csvfile:
+    dat_file = f"fermions_torus_kysym_V1_n_{numb_qy/3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
+    with open(vectors + f'laughlin/n_{numb_qy/3:g}/' + dat_file, 'r') as csvfile:
         data = csv.reader(csvfile, delimiter=' ')
         for row in data:
             if row[0].isnumeric():
                 energies.append(float(row[1]))
-        ground = min(energies)
+        laughlin_gap = sorted(energies)[3] - sorted(energies)[0]
+        laughlin_ground = min(energies)
 
-    print(ground)
+    # get coulomb gap and ground state energy (from dat file)
+    energies = []
+    dat_file = f"fermions_torus_kysym_coulomb_n_{numb_qy / 3:g}_2s_{numb_qy:g}_ratio_1.000000.dat"
+    with open(vectors + f'coulomb/n_{numb_qy / 3:g}/' + dat_file, 'r') as csvfile:
+        data = csv.reader(csvfile, delimiter=' ')
+        for row in data:
+            if row[0].isnumeric():
+                energies.append(float(row[1]))
+        coulomb_gap = sorted(energies)[3] - sorted(energies)[0]
+        coulomb_ground = min(energies)
+
+    if name == "V1":
+        scale = laughlin_gap / coulomb_gap
+        offset = laughlin_ground
+    elif name == "coulomb":
+        scale = 1
+        offset = coulomb_ground
+    else:
+        scale = 1
+        offset = 0
+
+    print(scale, offset)
 
     for qy_value in range(numb_qy):
         omega = []
@@ -38,7 +59,7 @@ def plot_2d_q(axis, name, numb_qy, omega_min, omega_max):
         with open(stripped_files + file, 'r') as csvfile:
             plots = csv.reader(csvfile, delimiter=' ')
             for row in plots:
-                omega.append((float(row[0])+10) - ground)
+                omega.append((float(row[0])+10)/scale - offset)
                 SR.append(float(row[1])/100)
         axis.scatter(omega, SR, s=1, label=qy_value, marker=next(marker))
 
@@ -73,10 +94,10 @@ if __name__ == "__main__":
     fig = plt.figure(figsize=(6, 2.5))
     gs = gridspec.GridSpec(1, 2, hspace=0.4, wspace=0.4)
 
-    # ax0 = plt.subplot(gs[0])
-    # plot_2d_q(ax0, "V1", 18, omega_min=-100, omega_max=100)
-    ax1 = plt.subplot(gs[1])
-    plot_2d_q(ax1, "coulomb", 24, omega_min=-100, omega_max=100)
+    ax0 = plt.subplot(gs[0])
+    plot_2d_q(ax0, "V1", 18, omega_min=-100, omega_max=100)
+    # ax1 = plt.subplot(gs[1])
+    # plot_2d_q(ax1, "coulomb", 24, omega_min=-100, omega_max=100)
 
     fig.text(0.04, 0.85, "(a)", fontsize=12)
     fig.text(0.49, 0.85, "(b)", fontsize=12)

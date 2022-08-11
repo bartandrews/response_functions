@@ -7,7 +7,7 @@ if __name__ == "__main__":
     # response_functions = "/disk/data11/tfp/BartMadhav/project3.5"
 
     # INPUT
-    n_val = 8  # number of particles
+    n_val = 9  # number of particles
     mid = -10.6995  # midpoint
     std = 0.6095  # deviation
 

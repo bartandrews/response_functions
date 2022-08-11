@@ -10,10 +10,10 @@ if __name__ == "__main__":
     file.write("#!/bin/bash\n\n")
     file.write("runs() {\n")
 
-    for n_val in [6]:
+    for n_val in [9]:
         for lamb_exp in [-4, -3, -2, -1, 0, 1, 2]:
             lamb = 10 ** lamb_exp
-            for alpha in np.linspace(10**-4, 1, 11):
+            for alpha in [1]:  # np.linspace(10**-4, 1, 11)
                 # alpha = 10 ** alpha_exp
                 file.write(f"echo {Coulomb} -p {n_val:g} -l {3*n_val:g} --landau-level 0 --coulomb-strength {alpha:.5g} --yukawa-mass {lamb:.5g} --perturbation-file {response_functions}/pseudopotentials/plane/pseudopotentials_V1.dat --perturbation-strength {1-alpha:.5g} -g --use-lapack --eigenstate -n 1 -m 8000\n")
 

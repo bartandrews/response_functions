@@ -347,7 +347,7 @@ def plot_2d_lty_omega_range_lambda(axis, numb_qy, omega_min_val, omega_max_val):
 
 def plot_2d_lty_omega_mean_lambda_finite(axis, omega_min_val, omega_max_val):
 
-    for numb_idx, n_val in enumerate([6, 7, 8]):
+    for numb_idx, n_val in enumerate([6, 7, 8, 9]):
 
         omega = []
         SR = []

@@ -23,7 +23,7 @@ def plot_2d_q_specific(axis):
 
     domain = np.array([np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61),
                        np.linspace(0, 6, 61)], dtype=object)
-    particles = [6, 7, 8, 8, 9]
+    particles = [6, 7, 8, 9, 9]  # 6, 7, 8, 8, 9
 
     log_SR_max_mean = np.zeros(len(particles), dtype=object)
     log_SR_max_std = np.zeros(len(particles), dtype=object)
@@ -37,7 +37,7 @@ def plot_2d_q_specific(axis):
 
         for j in domain[N_idx]:
 
-            if n_val == 8 and N_idx == 2:
+            if n_val == 9 and N_idx == 3:  # n_val == 8 and N_idx == 2
                 file = f"fermions_torus_spec_resp_kysym_coulomb_n_{n_val:g}_2s_{3 * n_val:g}_ratio_1.000000_qx_0_qy_0" \
                        f".omega_{mid - std/(2**j):.6g}-{mid + std/(2**j):.6g}_eps_{0.0001 / (2 ** j):.6g}.sr.cut"
             else:
@@ -79,7 +79,7 @@ def plot_2d_q_specific(axis):
     axis.plot(1, 10, '.', marker='^', markersize=4, label="$\log_2(\sigma_{I_{\mathrm{max}}})$", c='k')
 
     for N_idx, n_val in enumerate(particles):
-        if N_idx == 2:
+        if N_idx == 3:  # 2
             alpha_val = 0.5
         else:
             alpha_val = 1
@@ -97,8 +97,8 @@ def plot_2d_q_specific(axis):
     leg.get_frame().set_linewidth(0.5)
     axis.add_artist(leg)
 
-    h = [plt.plot([], '.', marker="x", markersize=4, color="C2", alpha=0.5)[0]]
-    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{max}}})$, $N=8$, $q_x=0$"], loc=(0.555, 0.75), handletextpad=0,
+    h = [plt.plot([], '.', marker="x", markersize=4, color="C3", alpha=0.5)[0]]
+    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{max}}})$, $N=9$, $q_x=0$"], loc=(0.555, 0.75), handletextpad=0,
                borderpad=0.4, framealpha=0, edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
 
     xvalues = [np.log2(1/(2**j)) for j in domain[4]]
@@ -127,7 +127,7 @@ def plot_2d_gap_omega_res_max(axis):
 
     domain = np.array([np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61),
                        np.linspace(0, 6, 61)], dtype=object)
-    particles = [6, 7, 8, 8, 9]
+    particles = [6, 7, 8, 9, 9]  # 6, 7, 8, 8, 9
 
     omega_max_gap_mean = np.zeros(len(particles), dtype=object)
 
@@ -137,7 +137,7 @@ def plot_2d_gap_omega_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if n_val == 8 and N_idx == 2:
+            if n_val == 9 and N_idx == 3:  # n_val == 8 and N_idx == 2
                 file = f"fermions_torus_spec_resp_kysym_coulomb_n_{n_val:g}_2s_{3 * n_val:g}_ratio_1.000000_qx_0_qy_0" \
                        f".omega_{mid - std / (2 ** j):.6g}-{mid + std / (2 ** j):.6g}_eps_{0.0001 / (2 ** j):.6g}.sr.cut"
             else:
@@ -179,7 +179,7 @@ def plot_2d_gap_omega_res_max(axis):
               markersize=4, c="k")
 
     for N_idx, n_val in enumerate(particles):
-        if N_idx == 2:
+        if N_idx == 3:  # 2
             alpha_val = 0.5
         else:
             alpha_val = 1
@@ -202,7 +202,7 @@ def plot_2d_nbr_omega_res_max(axis):
 
     domain = np.array([np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61),
                        np.linspace(0, 6, 61)], dtype=object)
-    particles = [6, 7, 8, 8, 9]
+    particles = [6, 7, 8, 9, 9]  # 6, 7, 8, 8, 9
 
     lbl_values = np.zeros(len(particles), dtype=object)
     number_of_peaks = np.zeros(len(particles), dtype=object)
@@ -214,7 +214,7 @@ def plot_2d_nbr_omega_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if n_val == 8 and N_idx == 2:
+            if n_val == 9 and N_idx == 3:  # n_val == 8 and N_idx == 2
                 file = f"fermions_torus_spec_resp_kysym_coulomb_n_{n_val:g}_2s_{3 * n_val:g}_ratio_1.000000_qx_0_qy_0" \
                        f".omega_{mid - std / (2 ** j):.6g}-{mid + std / (2 ** j):.6g}_eps_{0.0001 / (2 ** j):.6g}.sr.cut"
             else:
@@ -255,7 +255,7 @@ def plot_2d_nbr_omega_res_max(axis):
         lbl_values[N_idx] = sorted(list(set(lbl)), reverse=True)
 
     for N_idx, n_val in enumerate(particles):
-        if N_idx == 2:
+        if N_idx == 3:  # 2
             alpha_val = 0.5
         else:
             alpha_val = 1
@@ -273,7 +273,7 @@ def plot_2d_mean_S_res_max(axis):
 
     domain = np.array([np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61), np.linspace(0, 6, 61),
                        np.linspace(0, 6, 61)], dtype=object)
-    particles = [6, 7, 8, 8, 9]
+    particles = [6, 7, 8, 9, 9]  # 6, 7, 8, 8, 9
 
     lbl_values = np.zeros(len(particles), dtype=object)
     S_max_bar = np.zeros(len(particles), dtype=object)
@@ -285,7 +285,7 @@ def plot_2d_mean_S_res_max(axis):
 
         for j in domain[N_idx]:
 
-            if n_val == 8 and N_idx == 2:
+            if n_val == 9 and N_idx == 3:  # n_val == 8 and N_idx == 2
                 file = f"fermions_torus_spec_resp_kysym_coulomb_n_{n_val:g}_2s_{3 * n_val:g}_ratio_1.000000_qx_0_qy_0" \
                        f".omega_{mid - std / (2 ** j):.6g}-{mid + std / (2 ** j):.6g}_eps_{0.0001 / (2 ** j):.6g}.sr.cut"
             else:
@@ -326,7 +326,7 @@ def plot_2d_mean_S_res_max(axis):
         lbl_values[N_idx] = sorted(list(set(lbl)), reverse=True)
 
     for N_idx, n_val in enumerate(particles):
-        if N_idx == 2:
+        if N_idx == 3:  # 2
             alpha_val = 0.5
         else:
             alpha_val = 1
