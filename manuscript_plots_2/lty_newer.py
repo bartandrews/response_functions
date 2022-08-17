@@ -396,8 +396,8 @@ def plot_2d_lty_omega_mean_lambda_finite(axis, omega_min_val, omega_max_val):
         for lbl_val in lbl_values:
             omega_set = [i for i, e in enumerate(lbl) if e == lbl_val]
             mean_val = np.average(omega[omega_set[0]:omega_set[-1]+1])
-            # log_mean_val = np.log10(mean_val)
-            log_mean_val = mean_val
+            log_mean_val = np.log10(mean_val)
+            # log_mean_val = mean_val
             log_mean_vals += [log_mean_val]
 
         log_lbl_values = [np.log10(i) for i in lbl_values]
@@ -407,30 +407,32 @@ def plot_2d_lty_omega_mean_lambda_finite(axis, omega_min_val, omega_max_val):
         axis.plot(log_lbl_values, log_mean_vals, c=f"C{numb_idx}")
 
         # plot the transition point
-        # x1 = log_lbl_values[0]
-        # y1 = log_mean_vals[0]
-        # x2 = log_lbl_values[1]
-        # y2 = log_mean_vals[1]
-        # m = (y2-y1)/(x2-x1)
-        # c = y1-m*x1
-        # v1 = log_lbl_values[-2]
-        # w1 = log_mean_vals[-2]
-        # v2 = log_lbl_values[-1]
-        # w2 = log_mean_vals[-1]
-        # alpha = (w2-w1)/(v2-v1)
-        # beta = w1-alpha*v1
-        # xint = (beta-c)/(m-alpha)
-        # yint = m*xint + c
-        # axis.scatter(xint, yint, marker='x', s=10, c=f"C{numb_idx}")
-        # if n_val == 8:
-        #     xvalues1 = np.linspace(-4, xint)
-        #     xvalues2 = np.linspace(xint, 2)
-        #     axis.plot(xvalues1, m * xvalues1 + c, '--', c='k', zorder=0, lw=0.5)
-        #     axis.plot(xvalues2, alpha * xvalues2 + beta, '--', c='k', zorder=0, lw=0.5)
+        x1 = log_lbl_values[0]
+        y1 = log_mean_vals[0]
+        x2 = log_lbl_values[1]
+        y2 = log_mean_vals[1]
+        m = (y2-y1)/(x2-x1)
+        c = y1-m*x1
+        v1 = log_lbl_values[-2]
+        w1 = log_mean_vals[-2]
+        v2 = log_lbl_values[-1]
+        w2 = log_mean_vals[-1]
+        alpha = (w2-w1)/(v2-v1)
+        beta = w1-alpha*v1
+        xint = (beta-c)/(m-alpha)
+        yint = m*xint + c
+        axis.scatter(xint, yint, marker='x', s=10, c=f"C{numb_idx}")
+        if n_val == 9:
+            xvalues1 = np.linspace(-4, xint)
+            xvalues2 = np.linspace(xint, 2)
+            axis.plot(xvalues1, m * xvalues1 + c, '--', c='k', zorder=0, lw=0.5)
+            print(m)
+            axis.plot(xvalues2, alpha * xvalues2 + beta, '--', c='k', zorder=0, lw=0.5)
+            print(alpha)
 
     axis.set_xlabel('$\\log\\lambda$')
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\\bar{\\Omega}$')
+    axis.set_ylabel('$\\log\\bar{\\Omega}$')
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
 
     leg = axis.legend(loc='lower left', handletextpad=0, borderpad=0.2, framealpha=1,
