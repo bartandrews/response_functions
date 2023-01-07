@@ -6,8 +6,8 @@ if __name__ == "__main__":
     file.write("#!/bin/bash\n\n")
     file.write("runs() {\n")
 
-    for numb_part in [8, 9, 10]:
-        for lamb in [0.0001, 0.001, 0.01, 0.1, 1, 10, 100]:
+    for numb_part in [6, 7, 8, 9]:
+        for lamb in [1000, 10000]:
             file.write(f"echo ~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusFermionsCoulomb -p {numb_part} -l {3*numb_part} "
                        f"--landau-level 0 --coulomb-strength 1 --yukawa-mass {lamb} "
                        f"--perturbation-file pseudopotentials_V1.dat --perturbation-strength 0 "

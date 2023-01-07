@@ -50,7 +50,7 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
             data = csv.reader(csvfile, delimiter=' ')
             for row in data:
                 omega.append(float(row[0])+10-ground)
-                SR.append(float(row[1])/1000)
+                SR.append(float(row[1])/100)
                 lbl += [2*i+1]
 
     axis.scatter(lbl, omega, SR, s=0.1, c=lbl, cmap='brg')
@@ -66,7 +66,7 @@ def plot_3d_cpt_variable_full(axis, numb_qy, omega_min, omega_max):
     axis.yaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$\\omega-\omega_0$')
     axis.zaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_zlabel('$I/10^3$')
+    axis.set_zlabel('$I/10^2$')
     axis.set_facecolor((0, 0, 0, 0))
     if axis == ax0:  # N=6
         axis.set_position(Bbox.from_bounds(0, 0.64, 0.44, 0.28))

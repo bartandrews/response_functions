@@ -75,8 +75,8 @@ def plot_2d_q_specific(axis):
             log_SR_max_mean[N_idx] += [np.log2(np.mean(sr_max))]
             log_SR_max_std[N_idx] += [np.log2(np.std(sr_max))]
 
-    axis.plot(1, 10, '.', marker='x', markersize=4, label="$\log_2(\mu_{I_{\mathrm{max}}})$", c='k')
-    axis.plot(1, 10, '.', marker='^', markersize=4, label="$\log_2(\sigma_{I_{\mathrm{max}}})$", c='k')
+    axis.plot(1, 10, '.', marker='x', markersize=4, label="$\log_2(\mu_{I_{\mathrm{peak}}})$", c='k')
+    axis.plot(1, 10, '.', marker='^', markersize=4, label="$\log_2(\sigma_{I_{\mathrm{peak}}})$", c='k')
 
     for N_idx, n_val in enumerate(particles):
         if N_idx == 3:  # 2
@@ -98,7 +98,7 @@ def plot_2d_q_specific(axis):
     axis.add_artist(leg)
 
     h = [plt.plot([], '.', marker="x", markersize=4, color="C3", alpha=0.5)[0]]
-    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{max}}})$, $N=9$, $q_x=0$"], loc=(0.555, 0.75), handletextpad=0,
+    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{peak}}})$, $N=9$, $q_x=0$"], loc=(0.547, 0.77), handletextpad=0,
                borderpad=0.4, framealpha=0, edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
 
     xvalues = [np.log2(1/(2**j)) for j in domain[4]]
@@ -108,7 +108,7 @@ def plot_2d_q_specific(axis):
     c = result.intercept
     R = result.rvalue
     axis.plot(xvalues, [m*i+c for i in xvalues], '-', c='k', zorder=-1, lw=0.5)
-    axis.text(-5.3, 2.9, f"$m_\mu={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
+    axis.text(-5.3, 2.9, f"$\kappa_\mu={m:.3g}\pm{m_err:.3g}$ ($R^2={R**2:.3g}$)")
 
     xvalues = [np.log2(1/(2**j)) for j in domain[4]]
     result = stats.linregress(xvalues, log_SR_max_std[4])
@@ -117,7 +117,7 @@ def plot_2d_q_specific(axis):
     c = result.intercept
     R = result.rvalue
     axis.plot(xvalues, [m * i + c for i in xvalues], '-', c='k', zorder=-1, lw=0.5)
-    axis.text(-5.3, 1.7, f"$m_\sigma={m:.3g}\pm{m_err:.3g}$")
+    axis.text(-5.3, 1.7, f"$\kappa_\sigma={m:.3g}\pm{m_err:.3g}$")
 
     # region = Polygon(((-6, -100), (-5.5, -100), (-5.5, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
     # axis.add_artist(region)
@@ -171,8 +171,8 @@ def plot_2d_gap_omega_res_max(axis):
             omega_gaps = [omega_max[i]-omega_max[i-1] for i in range(1, len(omega_max))]
             omega_max_gap_mean[N_idx] += [np.log2(np.mean(omega_gaps))]
 
-    axis.plot(1, 0, '.', marker='+', markersize=4, label="$\log_2|\Delta\\bar{\omega}_i - \Delta\\bar{\omega}_{i-1}|$", c='k')
-    axis.plot(1, 0, '.', marker='v', markersize=4, label="$\log_2\langle \Delta\Omega \\rangle$", c='k')
+    axis.plot(1, 0, '.', marker='+', markersize=4, label="$\log_2|\Delta\mathrm{range}(\Omega)|$", c='k')
+    axis.plot(1, 0, '.', marker='v', markersize=4, label="$\log_2(\mu_{\Delta\omega_{\mathrm{peak}}})$", c='k')
 
     axis.plot([-i for i in domain[0]],
               [np.log2((np.abs(5 / (2 ** i) - 5 / (2 ** (i - 1))))) for i in domain[0]], '+',
@@ -190,7 +190,7 @@ def plot_2d_gap_omega_res_max(axis):
     plt.setp(axis.get_xticklabels(), visible=False)
     axis.set_ylim(top=7)
 
-    leg = axis.legend(loc='upper right', handletextpad=0, borderpad=0.4, framealpha=0,
+    leg = axis.legend(loc='upper left', handletextpad=0, borderpad=0.4, framealpha=0,
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
     leg.get_frame().set_linewidth(0.5)
 
@@ -263,7 +263,7 @@ def plot_2d_nbr_omega_res_max(axis):
 
     axis.tick_params('x', direction='in', bottom=True)
     plt.setp(axis.get_xticklabels(), visible=False)
-    axis.set_ylabel('$n(I_\mathrm{max})$')
+    axis.set_ylabel('$n(\{I_\mathrm{peak}\})$')
 
     # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
     # axis.add_artist(region)
@@ -332,15 +332,15 @@ def plot_2d_mean_S_res_max(axis):
             alpha_val = 1
         axis.plot(lbl_values[N_idx], S_max_bar[N_idx], '.', markersize=4, c=f'C{n_val-particles[0]}', alpha=alpha_val)
 
-    axis.set_xlabel('$\log_2(\mathrm{range}(\omega)/\mathrm{range}(\omega_\mathrm{init}))$', labelpad=10)
+    axis.set_xlabel('$\log_2(\mathrm{range}(\Omega)/\mathrm{range}(\Omega_0))$', labelpad=10)
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
-    axis.set_ylabel('$\mu_{I_\mathrm{max}}\epsilon$')
+    axis.set_ylabel('$\mu_{I_\mathrm{peak}}\epsilon$')
 
     custom_lines = [Line2D([0], [0], color='C0', lw=4),
                     Line2D([0], [0], color='C1', lw=4),
                     Line2D([0], [0], color='C2', lw=4),
                     Line2D([0], [0], color='C3', lw=4)]
-    axis.legend(custom_lines, ['$6$', '$7$', '$8$', '$9$'], bbox_to_anchor=(0.815, 5.6), ncol=4, title="$N$")
+    axis.legend(custom_lines, ['$6$', '$7$', '$8$', '$9$'], bbox_to_anchor=(0.815, 6.2), ncol=4, title="$N$")
 
     # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
     # axis.add_artist(region)
@@ -349,7 +349,7 @@ def plot_2d_mean_S_res_max(axis):
 if __name__ == "__main__":
 
     fig = plt.figure(figsize=(6, 7.5))
-    gs = gridspec.GridSpec(4, 1, hspace=0, height_ratios=[2, 1, 1, 1])
+    gs = gridspec.GridSpec(4, 1, hspace=0, height_ratios=[2, 0.8, 0.8, 0.8])
 
     ax0 = plt.subplot(gs[0])
     plot_2d_q_specific(ax0)
@@ -360,10 +360,10 @@ if __name__ == "__main__":
     ax3 = plt.subplot(gs[3], sharex=ax2)
     plot_2d_mean_S_res_max(ax3)
 
-    fig.text(0.02, 0.87, "(a)", fontsize=12)
-    fig.text(0.02, 0.56, "(b)", fontsize=12)
-    fig.text(0.02, 0.405, "(c)", fontsize=12)
-    fig.text(0.02, 0.25, "(d)", fontsize=12)
+    fig.text(0.02, 0.875, "(a)", fontsize=12)
+    fig.text(0.02, 0.525, "(b)", fontsize=12)
+    fig.text(0.02, 0.385, "(c)", fontsize=12)
+    fig.text(0.02, 0.245, "(d)", fontsize=12)
 
     plt.savefig("coulomb_scaling_complete_n_9_3.png", bbox_inches='tight', dpi=300)
     plt.show()
