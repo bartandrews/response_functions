@@ -6,7 +6,7 @@ Script files to accompany the paper "Self-similarity of spectral response functi
 Getting started
 ---------------
 
-The following commands are defined in `~/.bash_aliases`:
+The following commands are defined in ``~/.bash_aliases``:
 
 - ``alias TwoBodyGeneric=~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusFermionsTwoBodyGeneric``
 - ``alias Coulomb=~/DiagHam_latest/build/FQHE/src/Programs/FQHEOnTorus/FQHETorusFermionsCoulomb``
@@ -16,7 +16,7 @@ The following commands are defined in `~/.bash_aliases`:
 
 Note that the ``FQHETorusFermions`` and ``FQHETorus`` command prefixes have been dropped, for brevity.
 
-The spectral functions are plotted in 5 steps:
+The spectral response functions are plotted in 5 steps:
 
 1) If applicable, a pseudopotential file needs to be generated to describe the interaction. For the V1 interaction, we use the file ``pseudopotentials_V1.dat``. For the Coulomb interaction, we can use the file ``pseudopotentials_CoulombPlane.dat``. For the Yukawa interaction (with lambda=1), we can use the file ``pseudopotentials_YukawaPlaneL1.dat``. These files are found in the directory ``pseudopotentials``.
 
@@ -74,4 +74,4 @@ This makes the spectral response functions amenable to plotting.
 References
 ----------
 
-`[Andrews22] <https://arxiv.org/abs/2201.04704>`__ "Self-similarity of spectral response functions for fractional quantum Hall states", by Bartholomew Andrews and Gunnar Möller, arXiv:2201.04704 [cond-mat.str-el].
+`[Andrews22] <https://arxiv.org/abs/2201.04704>`__ "Self-similarity of spectral response functions for fractional quantum Hall states" by Bartholomew Andrews and Gunnar Möller, arXiv:2201.04704 [cond-mat.str-el].
