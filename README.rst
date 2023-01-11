@@ -1,7 +1,7 @@
 response_functions
 ==================
 
-Script files for the spectral response project.
+Script files to accompany the paper "Self-similarity of spectral response functions for fractional quantum Hall states" `[Andrews22] <https://arxiv.org/abs/2201.04704>`__.
 
 Getting started
 ---------------
@@ -16,11 +16,11 @@ The following commands are defined in `~/.bash_aliases`:
 
 Note that the ``FQHETorusFermions`` and ``FQHETorus`` command prefixes have been dropped, for brevity.
 
-The spectral functions are generated in 3 steps.
+The spectral functions are plotted in 5 steps:
 
-1) A pseudopotential file needs to be generated to describe the interaction. For the V1 interaction, we use the file ``pseudopotentials_V1.dat``. For the Coulomb interaction, we can use the file ``pseudopotentials_CoulombPlane.dat``. For the Yukawa interaction (with lambda=1), we can use the file ``pseudopotentials_YukawaPlaneL1.dat``. These files are found in the directory ``pseudopotentials``.
+1) If applicable, a pseudopotential file needs to be generated to describe the interaction. For the V1 interaction, we use the file ``pseudopotentials_V1.dat``. For the Coulomb interaction, we can use the file ``pseudopotentials_CoulombPlane.dat``. For the Yukawa interaction (with lambda=1), we can use the file ``pseudopotentials_YukawaPlaneL1.dat``. These files are found in the directory ``pseudopotentials``.
 
-2) The lowest eigenvectors need to be computed in each ``k`` momentum sector. To this end, we may use either the ``TwoBodyGeneric`` program and specify a ``pseudopotential-file``, or the ``Coulomb`` program and specify a ``perturbation-file``. We avoid the use of pseudopotential files by using the ``Coulomb`` program for the Coulomb and Yukawa interactions, where possible. We also avoid using the ``Coulomb`` program with ``coulomb-strength 0``, since this is unintuitive.
+2) The lowest eigenvectors need to be computed in each ``k`` momentum sector. To this end, we may use either the ``TwoBodyGeneric`` program and specify a ``pseudopotential-file``, or the ``Coulomb`` program and specify a ``perturbation-file``. Unless otherwise stated, we avoid the use of pseudopotential files by using the ``Coulomb`` program for the Coulomb and Yukawa interactions, where possible. We also avoid using the ``Coulomb`` program with ``coulomb-strength 0``, since this is unintuitive.
 
 For the V1 interaction, we use the command:
 
@@ -59,19 +59,19 @@ For the Yukawa interaction (with lambda=1), we use the command:
 - ``cd yukawa``
 - ``SpectralResponse ../../vectors/yukawa/fermions_torus_kysym_yukawa-1_plus_V1_scale_0_n_6_2s_18_ratio_1.000000_ky_3.0.vec --sr-omega-min -100 --sr-omega-max 100 --sr-epsilon 1E-4 --sr-omega-interval 1E-5 --sr-spectral-resolution 1E-5 --use-coulomb --coulomb-strength 1 --yukawa-mass 1``
 
-4) After the spectral response functions have been generated in the ``FQHETorusSpectralResponse``, we can extract the largest 10,000 values from the files and place them in ``stripped_files`` (with a flat directory structure).
+4) After the spectral response functions have been generated in the ``FQHETorusSpectralResponse``, we can extract the largest values from the files and place them in ``stripped_files`` (with a flat directory structure).
 
 - ``strip_files.sh``
 
 This makes the spectral response functions amenable to plotting.
 
-5) We can then plot the spectral response functions by running e.g. ``sr.py``.
+5) Finally, we can plot the spectral response functions by running e.g. ``sr.py``.
 
-.. image:: debug/test/figures/sr_newest_fermions_TargetSpace_0.png
+.. image:: manuscript_plots_2/sr.png
 	:align: center
 	:width: 80%
 
 References
 ----------
 
-`[Andrews2022] <https://arxiv.org/abs/2201.04704>`__ "Self-similarity of spectral response functions for fractional quantum Hall states with long-range interactions", by Bartholomew Andrews and Gunnar Möller, arXiv (2022).
+`[Andrews22] <https://arxiv.org/abs/2201.04704>`__ "Self-similarity of spectral response functions for fractional quantum Hall states", by Bartholomew Andrews and Gunnar Möller, arXiv:2201.04704 [cond-mat.str-el].
