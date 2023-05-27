@@ -176,15 +176,15 @@ if __name__ == "__main__":
     plot_2d_cpt_variable_full_box(ax5, 24, omega_min=-20, omega_max=0)
 
     fig.text(0.02, 0.875, "(a)", fontsize=12)
-    fig.text(0.2, 0.845, "$N=6$", fontsize=12)
+    fig.text(0.2, 0.845, "$N_f=6$", fontsize=12)
     fig.text(0.49, 0.875, "(b)", fontsize=12)
 
     fig.text(0.02, 0.59, "(c)", fontsize=12)
-    fig.text(0.2, 0.556, "$N=7$", fontsize=12)
+    fig.text(0.2, 0.556, "$N_f=7$", fontsize=12)
     fig.text(0.49, 0.59, "(d)", fontsize=12)
 
     fig.text(0.02, 0.31, "(e)", fontsize=12)
-    fig.text(0.2, 0.275, "$N=8$", fontsize=12)
+    fig.text(0.2, 0.275, "$N_f=8$", fontsize=12)
     fig.text(0.49, 0.31, "(f)", fontsize=12)
 
     plt.savefig("cpt_y1_n_6_7_8.png", bbox_inches='tight', dpi=300)

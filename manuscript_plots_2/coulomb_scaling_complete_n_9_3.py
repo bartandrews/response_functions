@@ -98,7 +98,7 @@ def plot_2d_q_specific(axis):
     axis.add_artist(leg)
 
     h = [plt.plot([], '.', marker="x", markersize=4, color="C3", alpha=0.5)[0]]
-    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{peak}}})$, $N=9$, $q_x=0$"], loc=(0.547, 0.77), handletextpad=0,
+    plt.legend(handles=h, labels=["$\log_2(\mu_{I_{\mathrm{peak}}})$, $N_f=9$, $q_x=0$"], loc=(0.547, 0.77), handletextpad=0,
                borderpad=0.4, framealpha=0, edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
 
     xvalues = [np.log2(1/(2**j)) for j in domain[4]]
@@ -174,10 +174,6 @@ def plot_2d_gap_omega_res_max(axis):
     axis.plot(1, 0, '.', marker='+', markersize=4, label="$\log_2|\Delta\mathrm{range}(\Omega)|$", c='k')
     axis.plot(1, 0, '.', marker='v', markersize=4, label="$\log_2(\mu_{\Delta\omega_{\mathrm{peak}}})$", c='k')
 
-    axis.plot([-i for i in domain[0]],
-              [np.log2((np.abs(5 / (2 ** i) - 5 / (2 ** (i - 1))))) for i in domain[0]], '+',
-              markersize=4, c="k")
-
     for N_idx, n_val in enumerate(particles):
         if N_idx == 3:  # 2
             alpha_val = 0.5
@@ -186,9 +182,13 @@ def plot_2d_gap_omega_res_max(axis):
         axis.plot([-i for i in domain[N_idx]], omega_max_gap_mean[N_idx], 'v', markersize=4, c=f"C{n_val-particles[0]}",
                   alpha=alpha_val)
 
+    axis.plot([-i for i in domain[0][1:]],
+              [np.log2(np.abs(2 * std / (2 ** i) - 2 * std / (2 ** (i - 0.1)))) for i in domain[0][1:]], '+',
+              markersize=4, c="k")
+
     axis.tick_params('x', direction='in', bottom=True)
     plt.setp(axis.get_xticklabels(), visible=False)
-    axis.set_ylim(top=7)
+    axis.set_ylim(top=-2)
 
     leg = axis.legend(loc='upper left', handletextpad=0, borderpad=0.4, framealpha=0,
                       edgecolor='w', markerscale=1.5, ncol=2, labelspacing=0, columnspacing=0)
@@ -332,7 +332,7 @@ def plot_2d_mean_S_res_max(axis):
             alpha_val = 1
         axis.plot(lbl_values[N_idx], S_max_bar[N_idx], '.', markersize=4, c=f'C{n_val-particles[0]}', alpha=alpha_val)
 
-    axis.set_xlabel('$\log_2(\mathrm{range}(\Omega)/\mathrm{range}(\Omega_0))$', labelpad=10)
+    axis.set_xlabel('$\log_2(\gamma)$', labelpad=10)
     axis.xaxis.set_major_formatter(FormatStrFormatter('$%g$'))
     axis.set_ylabel('$\mu_{I_\mathrm{peak}}\epsilon$')
 
@@ -340,7 +340,7 @@ def plot_2d_mean_S_res_max(axis):
                     Line2D([0], [0], color='C1', lw=4),
                     Line2D([0], [0], color='C2', lw=4),
                     Line2D([0], [0], color='C3', lw=4)]
-    axis.legend(custom_lines, ['$6$', '$7$', '$8$', '$9$'], bbox_to_anchor=(0.815, 6.2), ncol=4, title="$N$")
+    axis.legend(custom_lines, ['$6$', '$7$', '$8$', '$9$'], bbox_to_anchor=(0.815, 6.2), ncol=4, title="$N_f$")
 
     # region = Polygon(((-6, -100), (-4.1, -100), (-4.1, 100), (-6, 100)), fc=(0, 0, 0, 0.1))
     # axis.add_artist(region)
