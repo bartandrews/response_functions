@@ -85,7 +85,7 @@ if __name__ == "__main__":
         ax.xaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
         ax.yaxis.set_major_formatter(ticker.FormatStrFormatter('$%g$'))
         ax.set_xlabel("$l$")
-        ax.set_ylabel(f"$\\bar{{E}}_{{{2*idx+1}}}-V^C_{{{2*idx+1}}}$")
+        ax.set_ylabel(f"$\\bar{{E}}_{{{2*idx+1}}}-V^\\mathrm{{C}}_{{{2*idx+1}}}$")
         ax.set_xticks(np.arange(6, flux_limit+1, 6))
         # ax.text(0.85, 0.62, f'$V_{{{2*idx+1}}}$', fontsize=11, transform=ax.transAxes)
         # ax.set_title(f'$V_{{{2*idx+1}}}$')
